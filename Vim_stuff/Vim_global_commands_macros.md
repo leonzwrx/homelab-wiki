@@ -1,3 +1,13 @@
+```bash
+ _     _____ ___  _   _ _____
+| |   | ____/ _ \| \ | |__  /
+| |   |  _|| | | |  \| | / / 
+| |___| |__| |_| | |\  |/ /_ 
+|_____|_____\___/|_| \_/____|
+```
+
+*Updated July 2024*
+
 ## Vim: Global Commands and Macros
 
 ### Global Commands
@@ -49,7 +59,3 @@ Suppose you have a list of items and want to append " - Done" to each line. Here
     * `@@`: Repeats the last recorded macro.
 * Use meaningful names for macros (e.g., `qaDD` for deleting a line).
 * Macros offer various use cases for efficient editing.
-
-**Remember:** 
-* Always be cautious when using global commands and macros to avoid unintended edits.
-* Experiment and practice to master these features and enhance your Vim workflow.
