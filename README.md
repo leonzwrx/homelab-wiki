@@ -11,4 +11,4 @@ This repository contains my homelab documentation files, notes, setups, and conf
 Other resources
 ---
  - [dotfiles](https://github.com/leonzwrx/dotfiles)
- - [linux-setup-scripts] (https://github.com/leonzwrx/linux-setup-scripts)
+ - [linux-setup-scripts](https://github.com/leonzwrx/linux-setup-scripts)
