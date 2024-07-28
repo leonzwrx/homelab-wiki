@@ -6,4 +6,9 @@
 | |___| |__| |_| | |\  |/ /_ 
 |_____|_____\___/|_| \_/____|
 ```
-This repository is a collection of configuration files for my home lab.
+This repository contains my homelab documentation files, notes, setups, and configurations for infrastructure, applications, networking, and more. 
+---
+Other resources
+---
+ - [dotfiles](https://github.com/leonzwrx/dotfiles)
+ - [linux-setup-scripts] (https://github.com/leonzwrx/linux-setup-scripts)
