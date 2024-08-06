@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=GoZaMgEgrHw
 https://technotim.live/posts/first-11-things-proxmox
 https://tteck.github.io/Proxmox/#proxmox-ve-post-install
 
-**General steps**
+### General steps
 - Follow most defaults during install
 	+ ext4 on built-in SSD and LVM/LVM-thin setup
 	+ Assign static IP, hostname (pve1.domain.local, etc)
@@ -53,4 +53,3 @@ then reboot
 - Add appropriate datastore / NFS:
 	+ Storage tab - add NFS
 - Backups tab, create backup schedule (TBD)
-
