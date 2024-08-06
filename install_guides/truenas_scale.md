@@ -22,8 +22,12 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
 - Disable NFSv3
 - Enable SSH
 - When creating new datasets, create child datasets for applications/containers to properly see them (vs. creating subdirectories from another machine)
+ ![IMAGE](./truenas_screenshots/truenas_datasets.png?raw=true)
+ ![IMAGE](./truenas_screenshots/truenas_data_protection.png?raw=true)
 
 >Use preset nfs4_775 and assign `smbuser` permissions where it needs it 
+
+ ![IMAGE](./truenas_screenshots/truenas_acl.png?raw=true)
 
  ### SMB Configuration
  `smbuser` for SMB access (edit ACL permissions, leave share permissions alone)
@@ -40,4 +44,6 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
  - For applications/containers, such as **PLEX**, that application's user (default is `apps` must be in the ACL as seen below:
  
  ### Applications/Containers
- Plex storage config shown below (user ID set to 3000)
+ Plex storage config shown below (user ID set to 3000)  
+
+ ![IMAGE](./truenas_screenshots/truenas_plex.png?raw=true)
