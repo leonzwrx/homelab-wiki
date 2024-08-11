@@ -1,0 +1,9 @@
+# Start portainer (rootful)
+sudo podman run \
+  --detach \
+  -p 9443:9443 \
+  --privileged \
+  --name portainer \
+  --volume /run/podman/podman.sock:/var/run/docker.sock:Z \
+  --volume portainer_data:/data:Z \
+  docker.io/portainer/portainer-ce:latest
