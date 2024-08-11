@@ -1,0 +1,21 @@
+[Unit]
+Description=Podman container-portainer.service
+Documentation=man:podman-generate-systemd(1)
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/run/containers/storage
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+Restart=on-failure
+TimeoutStopSec=70
+ExecStart=/usr/bin/podman start portainer
+ExecStop=/usr/bin/podman stop  \
+	-t 10 portainer
+ExecStopPost=/usr/bin/podman stop  \
+	-t 10 portainer
+PIDFile=/run/containers/storage/overlay-containers/4a2ca4d2ff990afaf70ac81190b8a02d097e8421241966f9d18dcee4c454cd50/userdata/conmon.pid
+Type=forking
+
+[Install]
+WantedBy=default.target
