@@ -48,6 +48,7 @@ sudo passwd podman_service
 	- After creating a basic network, set it as default
 		+ In RHEL 9, the default configuration is derived from `/usr/share/containers/containers.conf`. You can copy this file to `/etc/containers/containers.conf` (`inside ~/.config` if rootless) and set the `default_network` variable if you would like to use a different subnet for the default network. You can then apply the config with `systemctl restart podman`
 	- Test a basic nginx image by creating a container, assigning a newly created network and mapping 80:80 if rootful or 8080:80 if rootless
+![IMG]([https://hackster.imgix.net/uploads/attachments/394225/Retropie-hotkeys.png?auto=compress%2Cformat&w=740&h=555&fit=max](https://github.com/leonzwrx/homelab-wiki/blob/main/install_guides/portainer_test.png?raw=true)
 
 ### 5. Start/Stop/Restart
 * The `podman generate systemd` command simplifies the process of creating a systemd unit file.
