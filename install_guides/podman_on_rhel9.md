@@ -72,3 +72,4 @@ sudo passwd podman_service
 
 * Ensure the `podman_service` user has appropriate permissions to access the Podman socket and volumes.
 * Default storage location for rootful containers is `/var/lib/containers/storage`and for rootless - `$HOME/.local/share/containers/storage`
+* If having issues with permissions on a NAS volume, add matching user's uid to the ACL in TrueNAS dataset

@@ -21,6 +21,7 @@
 | Putty | - |
 | Adobe Lightroom | -|
 |Escort / KIA / Concept2, etc | - |
+|urbackup client | - |
 
 **Additional Configuration**
 

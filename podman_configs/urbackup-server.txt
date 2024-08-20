@@ -1,0 +1,10 @@
+#start urbackup-server (rootful)
+podman run \
+  -detach \
+  --name urbackup-server \
+  --volume /mnt/client_backups:/backups \
+  --volume urbackup-server_data:/var/urbackup \
+  -p 55413-55415:55413-55415 \
+  -p 35623:35623/udp \
+  --tz America/Denver \
+  uroni/urbackup-server
