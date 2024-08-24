@@ -16,6 +16,7 @@ General guide by CTT: https://christitus.com/urbackup/
 * Set up a container on the backend with the running service
 	- podman setup here: https://github.com/leonzwrx/homelab-wiki/tree/main/podman_configs
 	- Set an admin password
+	- configure backup windows, exclusions
 	
 ### Client setup - Windows
 
