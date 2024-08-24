@@ -44,5 +44,6 @@ sudo dnf install htop ncdu vim neofetch ranger git
 curl -sS https://starship.rs/install.sh | sh
 ```
 
-- Enable Cockpit:
+- Enable Cockpit and set firewall zone to home:
 `systemctl enable cockpit.service --now`
+`firewall-cmd --set-default-zone=home`
