@@ -8,9 +8,9 @@
 
 # OPENRGB & CKB-NEXT - Debian Bookworm
 
-*UPDATED JULY 2024*
+_UPDATED JULY 2024_
 
-*This guide shows how to install and configure my instance of OpenRGB to control RGB-enabled peripherals connected to ASUS motherboard as well as ckb-next application to control RGB on Corsair mouse/keyboard**
+_This guide shows how to install and configure my instance of OpenRGB to control RGB-enabled peripherals connected to ASUS motherboard as well as ckb-next application to control RGB on Corsair mouse/keyboard_
  
 ***
 - General install guide: https://gitlab.com/CalcProgrammer1/OpenRGB#linux

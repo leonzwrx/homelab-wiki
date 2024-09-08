@@ -1,0 +1,11 @@
+podman run -d \
+    -p 9001:9001 \
+    --name portainer_agent \
+    --security-opt label=disable \
+    -v /run/user/$(id -u)/podman/podman.sock:/var/run/docker.sock:Z \
+    -v portainer_agent:/var/lib/docker/volumes:Z \
+    --hostname portainer_agent \
+    --network="bridge" \
+    portainer/agent:latest
+
+

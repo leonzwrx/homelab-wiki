@@ -7,7 +7,7 @@
                              
 ```
 ## Plex Media Server and Jellyfin setup for TrueNAS Scale 24
-*Updated August 2024*
+_Updated August 2024_
 
 **General steps**
-- Use this guide: https://techmikeny.com/blogs/techtalk/how-to-set-up-plex-on-truenas
+- Use this guide: [https://techmikeny.com/blogs/techtalk/how-to-set-up-plex-on-truenas](https://techmikeny.com/blogs/techtalk/how-to-set-up-plex-on-truenas)

@@ -8,7 +8,7 @@
 
 # Podman on RHEL 9 Server - basic setup and use in rootless environment
 
-*UPDATED August 2024 - tested on RHEL 9.4 and Podman 4.9*
+_UPDATED August 2024 - tested on RHEL 9.4 and Podman 4.9_
 
 ### Prerequisites
 * A RHEL9 system with basic system administration privileges.
@@ -24,7 +24,6 @@
 ### Step-by-Step Guide
 
 #### 1. Create a Dedicated rootless User and Group  
-*Currently having issues getting rootless containers working with parts of my network so sticking with rootful for now*
 ```bash
 sudo useradd -d /var/lib/podman_service -m -s /bin/bash podman_service
 sudo groupadd podman_group
@@ -62,14 +61,15 @@ sudo passwd podman_service
 	```
 	- Generate a systemd unit file for a rootless container:
 	```
-	podman generate systemd nextcloud-rootless > ~/.config/systemd/user/nextcloud-rootless.service
-	system
-	systemctl --user daemon--reload\
+    	cd ~/.config/systemd/user
+     	podman generate systemd portainer_agent --files --name
+    	systemctl --user daemon--reload\
 	```
 	Then change WantedBy section to `WantedBy=default.target`
 	
 ### Notes
 
+* If using Portainer, set up a rootless **Portainer Agent** container to communicate with Portainer, then add as a separate environment (screenshot below) ![](assets/screenshot-20240908-123608.png)
 * Ensure the `podman_service` user has appropriate permissions to access the Podman socket and volumes.
 * Default storage location for rootful containers is `/var/lib/containers/storage`and for rootless - `$HOME/.local/share/containers/storage`
 * If having issues with permissions on a NAS volume, add matching user's uid to the ACL in TrueNAS dataset

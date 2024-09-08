@@ -8,7 +8,7 @@
 ```
 
 ## UGREEN 4800 DXP4800 NAS - TrueNAS Scale
-*Updated August 2024 - for **Dragonfish-24.04.2***
+_Updated August 2024 - for **Dragonfish-24.04.2**_
 
 ### General:
 Guide:
@@ -24,8 +24,7 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
 - When creating new datasets, create child datasets for applications/containers to properly see them (vs. creating subdirectories from another machine)
  ![IMAGE](./truenas_screenshots/truenas_datasets.png?raw=true)
  ![IMAGE](./truenas_screenshots/truenas_data_protection.png?raw=true)
-
->Use preset nfs4_775 and assign `smbuser` permissions where it needs it 
+> Use preset nfs4_775 and assign `smbuser` permissions where it needs it 
 
  ![IMAGE](./truenas_screenshots/truenas_acl.png?raw=true)
 
@@ -33,15 +32,15 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
  `smbuser` for SMB access (edit ACL permissions, leave share permissions alone)
  ### NFS Configuration
  Guide: https://www.youtube.com/watch?v=txx0z-4HlSQ
- - When setting permissions, propagate to children if needed
- - Restrict networking to specific local subnets or individual hosts
+- When setting permissions, propagate to children if needed
+- Restrict networking to specific local subnets or individual hosts
  
  ### Other permission bits
 - Create user `pveuser` for proxmox and assign `rwx` in the ACL
 - Create user `leo` (add to admins) to standardize ACLs
 
- - Use **Maproot User** under for each NFS share (Advanced - Access) and select `root`, `pveuser`, etc #2
- - For applications/containers, such as **PLEX**, that application's user (default is `apps` must be in the ACL as seen below:
+- Use **Maproot User** under for each NFS share (Advanced - Access) and select `root`, `pveuser`, etc #2
+- For applications/containers, such as **PLEX**, that application's user (default is `apps` must be in the ACL as seen below:
  
  ### Applications/Containers
  Plex storage config shown below (user ID set to 3000)  

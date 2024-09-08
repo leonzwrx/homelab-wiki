@@ -1,5 +1,5 @@
 ## Windows 11 VM
-*Updated July 2024*
+_Updated July 2024_
 
 **Software Installation**
 
