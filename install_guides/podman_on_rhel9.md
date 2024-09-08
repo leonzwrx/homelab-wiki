@@ -41,7 +41,7 @@ sudo passwd podman_service
 - Check `/etc/subuid` and `/etc/subgid` files to verify each user that will be allowed to create containers are listed as described here https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md
 - For rootless containers, enable "lingering" for the podman_service account: `sudo loginctl enable-linger $USER`
 - Test a basic nginx image by creating a container, assigning a newly created network and mapping 80:80 if rootful or 8080:80 if rootless
-![IMG](/portainer_test.png?raw=true)
+![IMG](portainer_test.png?raw=true)
 - Verify whether your rootless configuration is properly set up. Run the following command to show how the UIDs are assigned to the user namespace:
 
 ```bash
