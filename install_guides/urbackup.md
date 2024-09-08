@@ -8,7 +8,7 @@
 
 # UrBackup guide
 
-*UPDATED August 2024*
+_UPDATED August 2024_
 
 General guide by CTT: https://christitus.com/urbackup/
 

@@ -8,7 +8,7 @@
 ```
 
 ## LVM management
-*Updated July 2024*
+_Updated July 2024_
 
 ## LVM Overview
 

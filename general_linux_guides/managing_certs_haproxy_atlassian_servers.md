@@ -8,7 +8,7 @@
 ```
 
 ## Managing certificates for HAProxy & Atlassian servers
-*Updated July 2024*
+_Updated July 2024_
 
 This guide outlines general steps for managing certificates for HAProxy and Atlassian servers (Jira, Bitbucket, Confluence). Replace placeholders with actual file paths and names as needed.
 

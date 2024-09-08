@@ -8,7 +8,7 @@
 ```
 
 ## Proxmox 8 Setup
-*Updated July 2024*
+_Updated July 2024_
 
 Links:  
 https://www.youtube.com/watch?v=sZcOlW-DwrU
@@ -22,13 +22,13 @@ https://tteck.github.io/Proxmox/#proxmox-ve-post-install
 	+ Assign static IP, hostname (pve1.domain.local, etc)
 
 - Run Proxmox VE Post Install scripts from :
-	```bash
-	bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
-	```
-		- correct update sources
-		- disable pve-enterprise repos
-		- enable `pve-no-subscription` repo
-		- correct ceph-package sources
+```bash
+    -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
+```
+- correct update sources
+- disable pve-enterprise repos
+- enable `pve-no-subscription` repo
+- correct ceph-package sources
 
 - Continue the rest of the setup via web interface:
 	+ Create or add iso datastore

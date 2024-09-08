@@ -8,7 +8,7 @@
 ```
 
 ## Post-Installation Steps for RHEL 9 Server
-*Updated August 2024*
+_Updated August 2024_
 
 **General steps**
 - For a basic RHEL9 VM, follow most defaults, automatic partitioning and disable root
