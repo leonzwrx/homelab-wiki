@@ -7,7 +7,7 @@
                              
 ```
 
-## LVM management
+# LVM management
 _Updated July 2024_
 
 ## LVM Overview

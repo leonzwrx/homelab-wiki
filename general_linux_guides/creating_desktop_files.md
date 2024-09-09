@@ -7,7 +7,7 @@
                              
 ```
 
-## Creating .desktop files
+# Creating .desktop files
 *Updated July 2024*
 
 Create a `.desktop` file for an application installed manually. This file allows you to launch the application from your application menu.

@@ -7,7 +7,7 @@
                              
 ```
 
-## btrfs RAID 1 setup
+# btrfs RAID 1 setup
 *Updated July 2024*
 
 ### Creating a BTRFS RAID 1 Array
