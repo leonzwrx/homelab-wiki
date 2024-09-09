@@ -8,7 +8,7 @@
 
 # Podman on RHEL 9 Server - basic setup and use in rootless environment
 
-_UPDATED August 2024 - tested on RHEL 9.4 and Podman 4.9_
+_UPDATED September 2024 - tested on RHEL 9.4 and Podman 4.9_
 
 ### Prerequisites
 * A RHEL9 system with basic system administration privileges.
@@ -37,19 +37,18 @@ sudo passwd podman_service
 ```
 * Set a strong password for the `podman_service` user.
 
-### 3. Verify Other settings for rootful containers:
+### 3. Verify Other settings for rootless containers:
 - Check `/etc/subuid` and `/etc/subgid` files to verify each user that will be allowed to create containers are listed as described here https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md
 - For rootless containers, enable "lingering" for the podman_service account: `sudo loginctl enable-linger $USER`
+- Test a basic nginx image by creating a container, assigning a newly created network and mapping 80:80 if rootful or 8080:80 if rootless
+![IMG](portainer_test.png?raw=true)
+- Verify whether your rootless configuration is properly set up. Run the following command to show how the UIDs are assigned to the user namespace:
 
-### Networking Changes
+```bash
+podman unshare cat /proc/self/uid_map
+```
 
-* Create a new bridge network for our future containers with `sudo podman network create podman-custom`. The reasoning is somewhat trivial, Podman has a default network, that does not support DNS and is not addressable from Portainer (if using Portainer). 
-	- After creating a basic network, set it as default
-		+ In RHEL 9, the default configuration is derived from `/usr/share/containers/containers.conf`. You can copy this file to `/etc/containers/containers.conf` (`inside ~/.config` if rootless) and set the `default_network` variable if you would like to use a different subnet for the default network. You can then apply the config with `systemctl restart podman`
-	- Test a basic nginx image by creating a container, assigning a newly created network and mapping 80:80 if rootful or 8080:80 if rootless
-![IMG](https://github.com/leonzwrx/homelab-wiki/blob/main/install_guides/portainer_test.png?raw=true)
-
-### 5. Start/Stop/Restart
+### 4. Start/Stop/Restart
 * The `podman generate systemd` command simplifies the process of creating a systemd unit file.
 	- Overview of the process: https://www.youtube.com/watch?v=AGkM2jGT61Y
 	- Use arguments `--files` and `--name` to generate the file directly and use the container name.
