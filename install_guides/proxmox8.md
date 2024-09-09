@@ -7,7 +7,7 @@
                              
 ```
 
-## Proxmox 8 Setup
+# Proxmox 8 Setup
 _Updated July 2024_
 
 Links:  

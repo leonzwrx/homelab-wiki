@@ -7,7 +7,7 @@
                              
 ```
 
-## Post-Installation Steps for RHEL 9 Server
+# Post-Installation Steps for RHEL 9 Server
 _Updated August 2024_
 
 **General steps**

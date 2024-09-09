@@ -7,7 +7,7 @@
                              
 ```
 
-## UGREEN 4800 DXP4800 NAS - TrueNAS Scale
+# UGREEN 4800 DXP4800 NAS - TrueNAS Scale
 _Updated August 2024 - for **Dragonfish-24.04.2**_
 
 ### General:

@@ -6,7 +6,7 @@
 |_____|_____\___/|_| \_/____|
                              
 ```
-## Plex Media Server and Jellyfin setup for TrueNAS Scale 24
+# Plex Media Server and Jellyfin setup for TrueNAS Scale 24
 _Updated August 2024_
 
 **General steps**
