@@ -9,6 +9,7 @@ RequiresMountsFor=/run/containers/storage
 Environment=PODMAN_SYSTEMD_UNIT=%n
 Restart=on-failure
 TimeoutStopSec=70
+ExecStartPre=/bin/sleep 10
 ExecStart=/usr/bin/podman start portainer
 ExecStop=/usr/bin/podman stop  \
 	-t 10 portainer
