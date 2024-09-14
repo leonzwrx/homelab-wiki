@@ -34,7 +34,15 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
  Guide: https://www.youtube.com/watch?v=txx0z-4HlSQ
 - When setting permissions, propagate to children if needed
 - Restrict networking to specific local subnets or individual hosts
- 
+
+### Management stuff
+- enable SSH and copy ssh pub key for passwordless login, then disable ssh using password
+ ```bash
+ssh-copy-id admin@nasty.nilva.local
+admin@nasty[~]$ grep -i passwordauthentication /etc/ssh/sshd_config            
+PasswordAuthentication yes
+admin@nasty[~]$ sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+```
  ### Other permission bits
 - Create user `pveuser` for proxmox and assign `rwx` in the ACL
 - Create user `leo` (add to admins) to standardize ACLs
