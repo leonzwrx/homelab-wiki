@@ -5,7 +5,7 @@
 | |___| |__| |_| | |\  |/ /_ 
 |_____|_____\___/|_| \_/____|
 ```
-*Updated July 2024*
+_Updated July 2024_
 
 # General RetroPie Setup
 
