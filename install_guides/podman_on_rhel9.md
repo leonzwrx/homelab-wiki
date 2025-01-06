@@ -8,7 +8,7 @@
 
 # Podman on RHEL 9 Server - basic setup and use in rootless environment
 
-_UPDATED September 2024 - tested on RHEL 9.4 and Podman 4.9_
+_UPDATED December 2024 - tested on RHEL 9.5 and Podman 5.2
 
 ### Prerequisites
 * A RHEL9 system with basic system administration privileges.
@@ -74,3 +74,24 @@ podman unshare cat /proc/self/uid_map
 * Ensure the `podman_service` user has appropriate permissions to access the Podman socket and volumes.
 * Default storage location for rootful containers is `/var/lib/containers/storage`and for rootless - `$HOME/.local/share/containers/storage`
 * If having issues with permissions on a NAS volume, add matching user's uid to the ACL in TrueNAS dataset
+  * Add this to podman_service `.bashrc` file if quering user service throws errors:
+```bash
+    # Start dbus session automatically
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    export $(dbus-launch)
+fi
+
+#add XDG_RUNTIME_DIR variable
+
+if [ -z "$XDG_RUNTIME_DIR" ]; then
+    export XDG_RUNTIME_DIR=/run/user/$(id -ru)
+fi
+```
+### Troubleshooting / Issues
+* If getting this error (came up after upgrading to Podman 5+):
+`Error: current system boot ID differs from cached boot ID; an unhandled reboot has occurred. Please delete directories "/tmp/containers-user-1001/containers" and "/tmp/podman-run-1001/libpod/tmp" and re-run Podman`
+  3 solutions:
+  1 ) use `-tmpdir` argument 
+  2 )  or an easier solution is to mount `/tmp` to a tmpfs and not xfs - enable `tmp.mount`
+  3) set the temp directory in `/etc/containers/containers.conf`
+

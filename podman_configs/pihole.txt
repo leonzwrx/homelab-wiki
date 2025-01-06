@@ -1,0 +1,20 @@
+# start pihole (rootful)
+sudo podman run --name=pihole \
+--hostname=pi-hole \
+--dns=127.0.0.1 \
+--dns=8.8.8.8 \
+-e TZ=America/Denver \
+-e SERVERIP=192.168.254.210 \
+-e WEBPASSWORD=my_pihole_password \
+-e DNS1=1.1.1.1 \
+-e DNS2=1.0.0.1 \
+-e DNSSEC=true \
+-v pihole_pihole:/etc/pihole:Z \
+-v pihole_dnsmasq:/etc/dnsmasq.d:Z \
+-p 8080:80/tcp \
+-p 4443:443/tcp \
+-p 53:53/tcp \
+-p 53:53/udp \
+docker.io/pihole/pihole
+
+#--security-opt label:type=host \

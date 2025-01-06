@@ -3,9 +3,7 @@ podman run -d \
     --name portainer_agent \
     --security-opt label=disable \
     -v /run/user/$(id -u)/podman/podman.sock:/var/run/docker.sock:Z \
-    -v portainer_agent:/var/lib/docker/volumes:Z \
+    -v portainer_agent_volume:/var/lib/docker/volumes:Z \
     --hostname portainer_agent \
     --network="bridge" \
     portainer/agent:latest
-
-
