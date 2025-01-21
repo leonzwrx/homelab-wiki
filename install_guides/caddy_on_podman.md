@@ -47,7 +47,7 @@ podman volume create caddyfile
 podman volume create caddy_data
 podman volume create caddy_config
 ```
-3. Start the rootful container using the config file [here](https://github.com/leonzwrx/homelab-wiki/podman_configs/caddy.txt)
+3. Start the rootful container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/caddy.txt)
 4. Verify Caddy functionality by lauching podman host's default port 80 page:
 ![caddy_80.png](./assets/caddy_80.png)
 5. Edit the Caddy file and enable HTTPS - this configuration tells caddy to manage rss.nilva.net and enables Let“s Encrypt for HTTPS automatically (serves files from `/usr/share/caddy` and redirects HTTP requests to HTTPS)

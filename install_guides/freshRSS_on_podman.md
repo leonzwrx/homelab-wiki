@@ -26,7 +26,7 @@ sudo podman volume create freshrss_extensions
 ```bash
 sudo podman pull docker.io/freshrss/freshrss:latest
 ```
-5. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/podman_configs/freshrss.txt)
+5. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/freshrss.txt)
 
 ## Setup / Configuration
 - Go thru default configs using SQLite - decent guide [here](https://www.youtube.com/watch?v=bWRN93LYRpM)
@@ -69,7 +69,7 @@ podman volume create full-text-rss-config
 podman volume create full-text-rss-data
 podman volume create full-text-rss-cache
 ```
-2. Run this container using config file [here](https://github.com/leonzwrx/homelab-wiki/podman_configs/full-text-rss.txt)
+2. Run this container using config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/full-text-rss.txt)
 3. Verify firewall rules are updated:
 ```
   firewall-cmd --permanent --zone=home --add-port=50000/tcp
