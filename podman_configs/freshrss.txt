@@ -1,0 +1,10 @@
+# start freshrss (rootless)
+podman run -d --log-opt max-size=10m \
+  -p 8081:80 \
+  -e TZ=America/Denver \
+  -e 'CRON_MIN=1,31' \
+  -v freshrss_data:/var/www/FreshRSS/data:Z \
+  -v freshrss_extensions:/var/www/FreshRSS/extensions:Z \
+  --name freshrss \
+  freshrss/freshrss
+  # --security-opt label=type:container_t \
