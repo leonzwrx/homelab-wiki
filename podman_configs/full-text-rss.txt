@@ -1,7 +1,7 @@
 # start full-text-rss (rootless)
 podman run -d \
+    --network rss-network \
     --name full-text-rss \
-    --dns=8.8.8.8 \
     -p 50000:80 \
     -v full-text-rss-config:/config:Z \
     -v full-text-rss-data:/data:Z \
