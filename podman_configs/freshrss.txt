@@ -5,6 +5,6 @@ podman run -d --log-opt max-size=10m \
   -e 'CRON_MIN=1,31' \
   -v freshrss_data:/var/www/FreshRSS/data:Z \
   -v freshrss_extensions:/var/www/FreshRSS/extensions:Z \
+  --network rss-network \
   --name freshrss \
   freshrss/freshrss
-  # --security-opt label=type:container_t \

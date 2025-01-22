@@ -26,7 +26,13 @@ sudo podman volume create freshrss_extensions
 ```bash
 sudo podman pull docker.io/freshrss/freshrss:latest
 ```
-5. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/freshrss.txt)
+5. If using with full-text-rss - need to make sure there is a common network between containers that need to communicate (use the `--network rss-network` when creating containers that need to communicate):
+```bash
+podman network create \
+    rss-network
+```
+NOTE:  Once containers are online, they need to communicate to each other by their container name
+7. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/freshrss.txt)
 
 ## Setup / Configuration
 - Go thru default configs using SQLite - decent guide [here](https://www.youtube.com/watch?v=bWRN93LYRpM)
@@ -77,6 +83,9 @@ podman volume create full-text-rss-cache
 ```
 4. Load http://rhel9-apps.nilva.local:50000/
    	- Follow the quick start guide for each site
+   **NOTE:**
+   The URL from freshrss needs to include just the container name, for instance:
+   __http://full-text-rss/makefulltextfeed.php?url=sec%3A%2F%2Finsideevs.com%2Frss%2Fnews%2Fall%2F&max=200&links=preserve&exc=&submit=Create+Feed
 ## Client Setup (Android)
 - Download FeedMe from Playstore
 - Enable API via Authentication link listed on the Profile tab (for mobile apps, etc)
