@@ -7,31 +7,35 @@
 ```
 _Updated January 2025_
 
-# Caddy reverse proxy setup on podman (RHEL 9)
-- Caddy implicitly activates automatic HTTPS when it knows a domain name (i.e. hostname) or IP address it is serving.
-- Caddy automatically applies _Let's Encrypt_ SSL cert
-- General Caddy automatic HTTPS guide [here](https://caddyserver.com/docs/automatic-https)
+# Caddy reverse proxy setup on podman (RHEL 9) - with CloudFlare Tunnel
+**Concept:**
+
+* Caddy acts as a reverse proxy, forwarding traffic to internal service (FreshRSS or similar) on `rhel9-apps.nilva.local:8081`.
+* Cloudflare Tunnel handles SSL termination and encrypts traffic between the internet and your server.
+
+**Why Disable Automatic HTTPS in Caddy?**
+
+* Cloudflare acts as SSL endpoint, so Caddy doesn't need to manage certificates (Let's Encrypt).
+* This simplifies the Caddy configuration and avoids potential conflicts.
+
+**Overall Traffic Flow:**
+
+1. Access a public hostname such as `rss.nilva.net` through a browser.
+2. Cloudflare intercepts the request and terminates the HTTPS connection.
+3. Cloudflare forwards the decrypted request (usually HTTP) to the home lab through the Cloudflare Tunnel.
+4. Router directs the traffic to the podman container running Caddy (listening on port 80).
+5. Caddy acts as a reverse proxy, forwarding the request to your application such as FreshRSS server (`rhel9-apps.nilva.local:8081`).
+6. FreshRSS processes the request and sends the response back to Caddy.
+7. Caddy relays the response back to Cloudflare.
+8. Cloudflare encrypts the response with HTTPS and sends it back to the user's browser.
 
 ## Prerequisites
 
-- Caddy temporarily serves a special file on port 80 to prove to Let's Encrypt that it controls the domain.
-    - For this to work, your DNS CNAME record (cname.nilva.net) must resolve to your public IP (via example.asuscomm.com).
-    - Port 80 must be forwarded to your Caddy server.
-- For HTTP-01 challenge to work with SSL certs with Let's Encrypt cert, edit domain registrar and/or external DNS records 
-    1. Create appropriate A or CNAME records with public DNS manager
-    2. No additional DNS records are needed for the HTTP-01 challenge
-  - Verify podman host that will run Caddy isn't listening on :80 or :443
-  - Set up  port  forwarding for ports 80 and 443 from external sources to  Caddy's podman host IP
-        - Port 80 is required for the HTTP-01 challenge, which Let's Encrypt uses to validate that you control the domain. 
-        - It allows initial HTTP requests, which Caddy can redirect to HTTPS automatically.
-  * Example flow:
-            1) A client connects to http://rss.nilva.net (port 80)
-            2) Caddy responds to the HTTP request or redirects it to HTTPS (port 443).
-         - Port 443 is required for HTTPS traffic, which is the secure communication protocol.
-        - It allows Caddy to serve all encrypted requests over this port once the certificate is issued.
-  * Example flow:
-  1. A client connects to `https://rss.nilva.net` (port 443).
-  2. Caddy handles the request securely using the TLS certificate.
+* A running Cloudflare Tunnel configured with your domain (e.g., `rss.nilva.net`).
+
+* Port forwarding rules on your home router to direct traffic on ports 80 and 443 to the podman host running Caddy.
+
+* Podman installed on your RHEL 9 server.
 
 ## Setup/Configuration
 1. Add necessary firewall ports to home zone
@@ -50,36 +54,26 @@ podman volume create caddy_config
 3. Start the rootful container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/caddy.txt)
 4. Verify Caddy functionality by lauching podman host's default port 80 page:
 ![caddy_80.png](./assets/caddy_80.png)
-5. Edit the Caddy file and enable HTTPS - this configuration tells caddy to manage rss.nilva.net and enables Let“s Encrypt for HTTPS automatically (serves files from `/usr/share/caddy` and redirects HTTP requests to HTTPS)
-```
-rss.nilva.net {
-    root * /usr/share/caddy  # Path to your website files
-    file_server              # Serve static files
-    
-    # Optional: Uncomment to enable logging
-    # log {
-    #     output file /var/log/caddy/access.log
-    # }
-
-    # Optional: Redirect HTTP to HTTPS
-    @http {
-        protocol http
-    }
-    redir @http https://{host}{uri} permanent
-}
-```
+5. Edit the Caddy file and enable HTTPS - this configuration tells caddy to manage rss.nilva.net and enables Let's Encrypt for HTTPS automatically (serves files from `/usr/share/caddy` and redirects HTTP requests to HTTPS) if desired
 6. Restart caddy container: `podman restart caddy` and verify certificate has been installed
 7. If all other  testing successful, change Caddyfile again to use reverse proxy (and restart caddy again)
+
+Caddy file below that shows 2 scenarios where all SSL is managed by Cloudflare and not Caddy. The critical part lies within the nested `transport http` block. This block configures how Caddy handles the HTTPS connection to the backend:
+
+ *`tls`: This directive instructs Caddy to use TLS/SSL for the connection.
+ *`tls_insecure_skip_verify`: This directive instructs Caddy to bypass certificate verification for the backend server.
+
 ```
-rss.nilva.net {
-    reverse_proxy rhel9-apps.nilva.local:8081
+http://rss.nilva.net {
+        reverse_proxy rhel9-apps.nilva.local:8081
+}
 
-    # Optional: Enable logging
-    # log {
-    #     output file /var/log/caddy/rss_access.log
-    # }
-
-    # Optional: Enable compression for better performance
-    encode gzip zstd
+http://portainer.nilva.net {
+        reverse_proxy https://rhel9-apps.nilva.local:9443 {
+         transport http {
+          tls
+          tls_insecure_skip_verify
+        }
+   }
 }
 ```

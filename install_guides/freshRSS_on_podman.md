@@ -32,7 +32,8 @@ podman network create \
     rss-network
 ```
 NOTE:  Once containers are online, they need to communicate to each other by their container name
-7. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/freshrss.txt)
+
+6. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/freshrss.txt)
 
 ## Setup / Configuration
 - Go thru default configs using SQLite - decent guide [here](https://www.youtube.com/watch?v=bWRN93LYRpM)
@@ -43,7 +44,6 @@ NOTE:  Once containers are online, they need to communicate to each other by the
 [podman_service@rhel9-apps _data]$ pwd
 /var/lib/podman_service/.local/share/containers/storage/volumes/freshrss_extensions/_data
 [podman_service@rhel9-apps _data]$ git clone ssh://git@github.com/FreshRSS/Extensions.git
-```bash
 ```
 this may include some custom extensions:
 ```bash
@@ -85,13 +85,14 @@ podman volume create full-text-rss-cache
    	- Follow the quick start guide for each site
    **NOTE:**
    The URL from freshrss needs to include just the container name, for instance:
-   __http://full-text-rss/makefulltextfeed.php?url=sec%3A%2F%2Finsideevs.com%2Frss%2Fnews%2Fall%2F&max=200&links=preserve&exc=&submit=Create+Feed
+   _http://full-text-rss/makefulltextfeed.php?url=sec%3A%2F%2Finsideevs.com%2Frss%2Fnews%2Fall%2F&max=200&links=preserve&exc=&submit=Create+Feed_
 ## Client Setup (Android)
 - Download FeedMe from Playstore
 - Enable API via Authentication link listed on the Profile tab (for mobile apps, etc)
     - Might have to play with ad block app / whitelist on Android
     - Connect the app using the API key listed: 
     ![![fresh_rss_api.png](./assets/fresh_rss_api.png)
+
 NOTE: If using reverse proxy, update the API address in the FreshRSS configuration so that it reflects the new domain (rss.nilva.net) and is accessible externally. The mobile app FeedMe relies on the correct API endpoint to communicate with FreshRSS.
 
 **Procedure**
