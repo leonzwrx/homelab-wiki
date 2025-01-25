@@ -1,0 +1,9 @@
+#start rootful cloudflared connector
+#create volume first
+podman run -d \
+  --name cloudflared \
+  --volume cloudflared-data:/data \
+  cloudflare/cloudflared:latest \
+  tunnel --no-autoupdate run --token my_fucking_token
+  #--security-opt label=type:container \
+  #--security-opt seccomp=unconfined \
