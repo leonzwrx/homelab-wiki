@@ -1,4 +1,5 @@
-# start full-text-rss (rootless)
+#start rootless container
+#create volumes first
 podman run -d \
     --network rss-network \
     --name full-text-rss \

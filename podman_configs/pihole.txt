@@ -1,4 +1,6 @@
-# start pihole (rootful)
+#start rootful container
+#create volumes first
+#verify password
 sudo podman run --name=pihole \
 --hostname=pi-hole \
 --dns=127.0.0.1 \

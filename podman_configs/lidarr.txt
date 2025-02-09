@@ -1,0 +1,16 @@
+#start rootless container
+#create volume first
+#changed PUID and GUID from 1000 for permissions on rootless container 
+podman run \
+  --name=lidarr \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  -p 8686:8686 \
+  --network=arr-network \
+  -v lidarr_config:/config:Z \
+  -v /mnt/media/music:/music \
+  -v /mnt/media/downloads:/downloads \
+  --restart unless-stopped \
+  linuxserver/lidarr:latest

@@ -1,0 +1,16 @@
+#start rootless container
+#create volume first
+#changed PUID and GUID from 1000 for permissions on rootless container
+podman run \
+  --name=radarr \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  -p 7878:7878 \
+  --network=arr-network \
+  -v radarr_config:/config:Z \
+  -v /mnt/media/streaming/movies:/movies \
+  -v /mnt/media/downloads:/downloads \
+  --restart unless-stopped \
+  linuxserver/radarr:latest

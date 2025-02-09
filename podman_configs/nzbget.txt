@@ -1,0 +1,15 @@
+#start rootless container
+#create volume first
+#changed PUID and GUID from 1000 for permissions on rootless container
+podman run \
+  --name=nzbget \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  -p 6789:6789 \
+  --network=arr-network \
+  -v nzbget_config:/config:Z \
+  -v /mnt/media/downloads:/downloads \
+  --restart unless-stopped \
+  linuxserver/nzbget:latest

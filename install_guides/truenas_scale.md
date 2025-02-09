@@ -21,12 +21,13 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
 - Backup config file
 - Disable NFSv3
 - Enable SSH
-- When creating new datasets, create child datasets for applications/containers to properly see them (vs. creating subdirectories from another machine)
- ![IMAGE](./truenas_screenshots/truenas_datasets.png?raw=true)
- ![IMAGE](./truenas_screenshots/truenas_data_protection.png?raw=true)
+- When creating new datasets, create child datasets for applications/containers to properly see them (vs. creating subdirectories from another machine): **Click _Multiprotocol_**
+![trunas_adding_new_sharepng.png](./assets/trunas_adding_new_sharepng.png)
+ ![IMAGE](./assets/truenas_datasets.png?raw=true)
+ ![IMAGE](./assets/truenas_data_protection.png?raw=true)
 > Use preset nfs4_775 and assign `smbuser` permissions where it needs it 
 
- ![IMAGE](./truenas_screenshots/truenas_acl.png?raw=true)
+ ![IMAGE](./assets/truenas_acl.png?raw=true)
 
  ### SMB Configuration
  `smbuser` for SMB access (edit ACL permissions, leave share permissions alone)
@@ -43,14 +44,17 @@ admin@nasty[~]$ grep -i passwordauthentication /etc/ssh/sshd_config
 PasswordAuthentication yes
 admin@nasty[~]$ sudo sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
 ```
- ### Other permission bits
+### Other permission bits
 - Create user `pveuser` for proxmox and assign `rwx` in the ACL
 - Create user `leo` (add to admins) to standardize ACLs
 
-- Use **Maproot User** under for each NFS share (Advanced - Access) and select `root`, `pveuser`, etc #2
+- Use **Maproot User** under for each NFS share (Advanced - Access) and select `root`, `pveuser`, etc
 - For applications/containers, such as **PLEX**, that application's user (default is `apps` must be in the ACL as seen below:
  
- ### Applications/Containers
+### Applications/Containers
  Plex storage config shown below (user ID set to 3000)  
 
- ![IMAGE](./truenas_screenshots/truenas_plex.png?raw=true)
+ ![IMAGE](./assets/truenas_plex.png?raw=true)
+
+### API
+To create an API Key, follow the official TrueNAS documentation [here](https://www.truenas.com/docs/scale/scaletutorials/toptoolbar/managingapikeys/)

@@ -7,8 +7,8 @@
 ```
 _Updated January 2025_
 
-# Caddy reverse proxy setup on podman (RHEL 9) - with CloudFlare Tunnel
-**Concept:**
+# Caddy reverse proxy setup on podman - with CloudFlare Tunnel
+**Concept**
 
 * Caddy acts as a reverse proxy, forwarding traffic to internal service (FreshRSS or similar) on `rhel9-apps.nilva.local:8081`.
 * Cloudflare Tunnel handles SSL termination and encrypts traffic between the internet and your server.
@@ -40,10 +40,9 @@ _Updated January 2025_
 ## Setup/Configuration
 1. Add necessary firewall ports to home zone
 ```bash
-firewall-cmd --zone=home --add-service=http
-firewall-cmd --zone=home --add-service=https
 firewall-cmd --permanent --zone=home --add-service=http
 firewall-cmd --permanent --zone=home --add-service=https
+firewall-cmd --reload
 ```
 2. Create podman volumes:
 ```bash

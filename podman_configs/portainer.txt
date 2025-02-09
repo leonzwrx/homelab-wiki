@@ -1,4 +1,5 @@
-# Start portainer (rootful)
+#start rootful container
+#create volumes first
 sudo podman run \
   --detach \
   -p 9443:9443 \

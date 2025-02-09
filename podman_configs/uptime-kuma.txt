@@ -1,7 +1,8 @@
 #start rootless container
-#make sure port 3001/tcp is allowed
+#create volume first
 podman run \
 --detach \
+--network="host" \
 -p 3001:3001 \
 --volume uptime-kuma_data:/app/data:Z \
 --name uptime-kuma louislam/uptime-kuma:latest

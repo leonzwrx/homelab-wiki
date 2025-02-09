@@ -9,7 +9,7 @@ _Updated July 2024_
 
 # General RetroPie Setup
 
-## Prerequisites
+## Pre-requisites
 
 1. Refer to the official [RetroPie documentation](https://retropie.org.uk/docs/) for detailed information.
 2. Ensure you have a Raspberry Pi with a microSD card.

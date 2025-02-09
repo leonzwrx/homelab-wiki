@@ -1,4 +1,5 @@
 #start rootful container
+#create volumes first
 podman run -d \
     --name caddy \
     -p 80:80 \

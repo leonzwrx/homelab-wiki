@@ -7,21 +7,18 @@
 ```
 _Updated January 2025_
 
-# Pihole setup on podman (RHEL 9)
+# Pihole setup on podman
 	
-## Prerequisites/Prep
+## Pre-requisites/Prep
 
 1. Verify podman functions correctly and rooted containers can be deployed
 2. Add necessary firewall ports to home zone (avoiding default ports 80 and 443)
 ```bash
-sudo firewall-cmd --zone=home --add-port=8080/tcp
-sudo firewall-cmd --zone=home --add-port=4443/tcp
-sudo firewall-cmd --zone=home --add-port=53/tcp
-sudo firewall-cmd --zone=home --add-port=53/udp
 sudo firewall-cmd --permanent --zone=home --add-port=53/udp
 sudo firewall-cmd --permanent --zone=home --add-port=53/tcp
 sudo firewall-cmd --permanent --zone=home --add-port=4443/tcp
 sudo firewall-cmd --permanent --zone=home --add-port=8080/tcp
+sudo firewall-cmd --reload
 ```
 3. Create podman volumes:
 ```bash

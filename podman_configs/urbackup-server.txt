@@ -1,4 +1,5 @@
-#start urbackup-server (rootful)
+#start rootful urbackup-server
+#create volumes first
 podman run \
   -detach \
   --name urbackup-server \
