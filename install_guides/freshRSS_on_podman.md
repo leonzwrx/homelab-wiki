@@ -7,15 +7,15 @@
 ```
 _Updated January 2025_
 
-# FreshRSS setup on podman (RHEL 9)
+# FreshRSS setup on podman
 	
-## Prerequisites/Prep
+## Pre-requisites/Prep
 
 1. Verify podman functions correctly and rootless containers can be deployed
 2. Add necessary firewall ports to home zone
 ```bash
-sudo firewall-cmd --zone=home --add-port=8081/udp
 sudo firewall-cmd --permanent --zone=home --add-port=8081/tcp
+sudo firewall-cmd --reload
 ```
 3. Create podman volumes:
 ```bash

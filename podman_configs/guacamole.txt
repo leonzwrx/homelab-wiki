@@ -1,0 +1,10 @@
+#start rootless Guacamole single-container
+#create volume first
+podman run \
+  --detach \
+  -p 8194:8080 \
+  -v guacamole-config:/config:Z \
+  -e "EXTENSIONS=auth-totp" \
+  --name guacamole \
+  docker.io/abesnier/guacamole
+  #--network="bridge" \

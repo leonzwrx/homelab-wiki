@@ -1,0 +1,10 @@
+#start rootless container
+#create volumes first
+podman run -d \
+  --name homepage \
+  -p 3000:3000 \
+  --network="host" \
+  -v homepage-config:/app/config:Z \
+  --privileged \
+  --env-file ~/homepage/.env \
+  ghcr.io/gethomepage/homepage:latest

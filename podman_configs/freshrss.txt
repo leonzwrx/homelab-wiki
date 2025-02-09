@@ -1,4 +1,5 @@
-# start freshrss (rootless)
+#start rootless container
+#create volumes first
 podman run -d --log-opt max-size=10m \
   -p 8081:80 \
   -e TZ=America/Denver \

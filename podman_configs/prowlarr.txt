@@ -1,0 +1,14 @@
+#start rootless container
+#create volume first
+#changed PUID and GUID from 1000 for permissions on rootless container
+podman run \
+  --name=prowlarr \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  -p 9696:9696 \
+  --network=arr-network \
+  -v prowlarr_config:/config:Z \
+  --restart unless-stopped \
+  linuxserver/prowlarr:latest

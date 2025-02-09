@@ -51,7 +51,10 @@ then reboot
 
 - Make proxmox VLAN-aware - Go into System - Network - Bridge - Edit (check VLAN-aware)
 - Add appropriate datastore / NFS:
-	+ Storage tab - add NFS: ![IMAGE](./proxmox_screenshots/proxmox-nfs.png)
+	+ Storage tab - add NFS: ![IMAGE](./assets/proxmox-nfs.png)
 - Backups tab, create backup schedule (make sure NFS-Backups NFS share exists first):
-	![IMAGE](./proxmox_screenshots/proxmox-backups.png)
-	![IMAGE](./proxmox_screenshots/proxmox-backups2.png)
+	![IMAGE](./assets/proxmox-backups.png)
+	![IMAGE](./assets/proxmox-backups2.png)
+
+### Other configs
+- For homepage dashboard (or similar), follow [this link](https://gethomepage.dev/widgets/services/proxmox/) to properly create permissions and API key
