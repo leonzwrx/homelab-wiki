@@ -1,6 +1,7 @@
 #start rootless container
 #create volume first
 #changed PUID and GUID from 1000 for permissions on rootless container
+#make sure gluetun is up and running correctly first
 podman run \
   --name=qbittorrent \
   --detach \
@@ -9,10 +10,7 @@ podman run \
   -e TZ=America/Denver \
   -e WEBUI_PORT=8282 \
   -e TORRENTING_PORT=6881 \
-  -p 8282:8282 \
-  -p 6881:6881 \
-  -p 6881:6881/udp \
-  --network=arr-network \
+  --network=container:gluetun \
   -v qbittorrent_config:/config:Z \
   -v /mnt/media/downloads:/downloads \
   --restart unless-stopped \

@@ -1,0 +1,29 @@
+#start rootless container
+#create volume first
+podman run -d \
+  --name gluetun \
+  --privileged \
+  --cap-add=NET_ADMIN \
+  --device /dev/net/tun:/dev/net/tun \
+  -v gluetun_config:/gluetun \
+  -e VPN_SERVICE_PROVIDER=protonvpn \
+  -e VPN_TYPE=openvpn \
+  -e OPENVPN_USER=my_fucking_user_pmp \
+  -e OPENVPN_PASSWORD=my_fucking_password \
+  -e SERVER_COUNTRIES=Netherlands \
+  -e PORT_FORWARD_ONLY=on \
+  -e VPN_PORT_FORWARDING=on \
+  -e DNS_ADDRESSES=1.1.1.1,1.0.0.1 \
+  -e HEALTH_VPN_DURATION_INITIAL=120s \ 
+  -e TZ=America/Denver \
+  -p 8282:8282 \
+  -p 6881:6881 \
+  -p 6881:6881/udp \
+  -p 6789:6789 \
+  -p 7878:7878 \
+  -p 8989:8989 \
+  -p 8686:8686 \
+  -p 8787:8787 \
+  -p 9696:9696 \
+  --restart always \
+  qmcgaw/gluetun:latest
