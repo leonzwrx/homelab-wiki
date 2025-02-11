@@ -5,14 +5,17 @@
 | |___| |__| |_| | |\  |/ /_ 
 |_____|_____\___/|_| \_/____|
 ```
-_Updated January 2025_
+_Updated February 2025_
 
-# ARR stack (Media auromation) setup on podman
+# ARR stack (with VPN) setup on podman
 - If just getting basics, NZBGet, Sonarr, Radarr, Prowlarr, Readarr, Lidarr should supplement Plex server nicely
 - Decent overall guide for podman (but older version) [here](https://medium.com/@Pooch/containerized-media-server-setup-with-podman-3727727c8c5f)
 - Decent basic `arr` configurtion guide [on YouTube](https://www.youtube.com/watch?v=1eqPmDvMjLY) and its [wiki](https://github.com/automation-avenue/youtube-39-arr-apps-1-click)
-- Other optional pieces - lidarr, overseer, gluetun
 - Most containers specify UID of 1000 - I'm replacing with UID 0 since these run on rootless `podman_service` account, which has UID of 1001 and should have NFS permissions
+- To protect the entire setup, **gluetun** will run as an anchor to all `arr` containers and connect to external VPN and all other containers will use `--network=container:gluetun` flag to piggyback off **gluetun**
+    - Great general guide to glue all these together [by TechHut](https://github.com/TechHutTV/homelab/tree/main/media#testing-gluetun-connectivity)
+    - [Proton VPN's port forwarding instructions](https://protonvpn.com/support/port-forwarding-manual-setup)
+    - [Gluetun's Proton VPN-specific wiki](https://github.com/qdm12/gluetun-wiki/blob/main/setup/providers/protonvpn.md#required-environment-variables)
 
 ## Pre-requisites/Prep
 
@@ -33,10 +36,21 @@ sudo firewall-cmd --reload
 3. Create / verify access to `/mnt/media` and make sure `podman_service` can access the share
     - NOTE: `fstab` file entry: `192.168.254.230:/mnt/z1pool/media   			/mnt/media    		nfs    nfsvers=4,rsize=8192,wsize=8192,timeo=14,retrans=2,hard,intr,x-systemd.requires=network-online.target,x-systemd.automount,x-systemd.idle-timeout=1min    0    0`
 	- run `mount -a` to verify
-4. Verify all "arr" containers run off the same network with `podman network create arr-network`
 
 ## Creating containers
 
+### Gluetun
+1. Create podman volumes:
+```bash
+podman volume create gluetun_config
+```
+2. Start the container using the config file  [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/gluetun.txt)
+3. Verify this container runs first and external connection is successful before creating others
+_**Testing Gluetun Connectivity**_
+Once you Gluetun container is up and running, you can test your connection is correct and secured. This assumes you keeP the gluetun container name. Learn more at the gluetun [wiki](https://github.com/qdm12/gluetun-wiki/blob/main/setup/test-your-setup.md).
+```bash
+podman run --rm --network=container:gluetun alpine:3.18 sh -c "apk add wget && wget -qO- https://ipinfo.io"
+```
 ### Sonarr
 1. Create podman volumes:
 ```bash
@@ -80,10 +94,18 @@ podman volume create qbittorrent_config
 2. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/qbittorrent.txt)
 
 # Communication & core configuration
+- To test other containers' VPN link: run:
+```bash
+podman exec -it container_name bash
+wget -qO- https://ipinfo.io
+```
+
 - For all newly deploying `arr` containers, login and set admin credentials
 - In **qBittorrent**:
   1. grab temp password from container's logs and change it
-  2. Go to Tools - Options - WebUI - change the user and password and tick 'bypass authentication for clients on localhost' .
+  2. - Go to Tools - Options - WebUI - change the user and password and tick 'bypass authentication for clients on localhost' .
+       - Set NIC to tun0: 
+       ![arr_qbittorrent_NIC.png](./assets/arr_qbittorrent_NIC.png)
 - In **NZBGet**:
   1. Change both regular and control passwords (username nzbget)
   2. Add a new category `Uncategorized`, `Books`, rename `Series` to `TV` and make any other  category change if needed
@@ -126,3 +148,7 @@ podman volume create qbittorrent_config
 - **Plex Connection (all arrs)**
   1. Settings - Connect - Add connection to Plex:
   ![arr_connect_to_plex.png](./assets/arr_connect_to_plex.png)
+# Issues / Troubleshooting
+- SELinux may prevent gluetun to properly run and throw errors similar to `TUN device is not available: open /dev/net/tun: permission denied`
+    - Currently running this container in with `--privileged` flag but may troubleshoot this further later - [link](https://github.com/qdm12/gluetun-wiki/blob/main/errors/tun.md)
+  - If port forwarding or dynamic mapping by Proton OpenVPN becomes an issue, check out [this link](https://github.com/t-anc/GSP-Qbittorent-Gluetun-sync-port-mod/tree/main)

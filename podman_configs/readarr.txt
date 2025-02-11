@@ -1,14 +1,14 @@
 #start rootless container
 #create volume first
 #changed PUID and GUID from 1000 for permissions on rootless container
+#make sure gluetun is up and running correctly first
 podman run \
   --name=readarr \
   --detach \
   -e PUID=0 \
   -e PGID=0 \
   -e TZ=America/Denver \
-  -p 8787:8787 \
-  --network=arr-network \
+  --network=container:gluetun \
   -v readarr_config:/config:Z \
   -v /mnt/media/books:/books \
   -v /mnt/media/downloads:/downloads \
