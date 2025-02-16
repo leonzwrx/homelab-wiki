@@ -6,7 +6,6 @@
 |_____|_____\___/|_| \_/____|
                              
 ```
-
 # btrfs RAID 1 setup
 _Updated July 2024_
 
