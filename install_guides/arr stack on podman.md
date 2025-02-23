@@ -31,6 +31,7 @@ sudo firewall-cmd --permanent --zone=home --add-port=8686/tcp #lidarr
 sudo firewall-cmd --permanent --zone=home --add-port=8282/tcp #qbittorrent
 sudo firewall-cmd --permanent --zone=home --add-port=6881/tcp #qbittorrent
 sudo firewall-cmd --permanent --zone=home --add-port=6881/udp #qbittorrent
+sudo firewall-cmd --permanent --zone=home --add-port=3300/tcp #firefox-vpn
 sudo firewall-cmd --reload
 ```
 3. Create / verify access to `/mnt/media` and make sure `podman_service` can access the share
@@ -92,7 +93,14 @@ podman volume create nzbget_config
 podman volume create qbittorrent_config
 ```
 2. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/qbittorrent.txt)
-
+### firefox-vpn
+This is useful to be connected to the rest of the stack for any communication with indexers/trackers, etc
+1. Create podman volumes:
+```bash
+podman volume create firefox-vpn_config
+podman volume create firefox-vpn_cache
+```
+2. Start the container using the config file [here](https://github.com/leonzwrx/homelab-wiki/blob/main/podman_configs/firefox-vpn.txt)
 # Communication & core configuration
 - To test other containers' VPN link: run:
 ```bash
