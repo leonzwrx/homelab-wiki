@@ -1,22 +1,23 @@
 #start rootful container
 #create volumes first
 #verify password
+#new commands reflect v6 changes
+#commented out dnsmasq.d line below and remove the volume
 sudo podman run --name=pihole \
---hostname=pi-hole \
+--detach \
+--hostname=pihole \
+--ip=10.89.1.9 \
 --dns=127.0.0.1 \
 --dns=8.8.8.8 \
 -e TZ=America/Denver \
--e SERVERIP=192.168.254.210 \
--e WEBPASSWORD=my_fucking_password \
--e DNS1=1.1.1.1 \
--e DNS2=1.0.0.1 \
--e DNSSEC=true \
+-e FTLCONF_dns_upstreams="1.1.1.1;1.0.0.1" \
+-e FTLCONF_dns_dnssec=true \
+-e FTLCONF_webserver_api_password="MY_FUCKING_PASSWORD" \
 -v pihole_pihole:/etc/pihole:Z \
--v pihole_dnsmasq:/etc/dnsmasq.d:Z \
 -p 8080:80/tcp \
 -p 4443:443/tcp \
 -p 53:53/tcp \
 -p 53:53/udp \
-docker.io/pihole/pihole
-
-#--security-opt label:type=host \
+docker.io/pihole/pihole:latest
+#-v pihole_dnsmasq:/etc/dnsmasq.d:Z \
+#-e FTL_CONF_listeningMode: 'all' \
