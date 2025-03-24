@@ -38,7 +38,7 @@ sudo passwd podman_service
 * Set a strong password for the `podman_service` user.
 
 ### 3. Verify Other settings for rootless containers:
-- Check `/etc/subuid` and `/etc/subgid` files to verify each user that will be allowed to create containers are listed as described here https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md
+- Check `/etc/subuid` and `/etc/subgid` files to verify each user that will be allowed to create containers are listed as described here [https://github.com/containers/podman/blob/main/docs/tutorials/rootless_tutorial.md](sudo chown -R podman_service:podman_service /sys/fs/cgroup/user.slice/user-1001.slice)
 - For rootless containers, enable "lingering" for the podman_service account: `sudo loginctl enable-linger $USER`
 - Verify whether your rootless configuration is properly set up. Run the following command to show how the UIDs are assigned to the user namespace:
 
@@ -48,7 +48,7 @@ podman unshare cat /proc/self/uid_map
 
 ### 4. Start/Stop/Restart
 * The `podman generate systemd` command simplifies the process of creating a systemd unit file.
-	- Overview of the process: https://www.youtube.com/watch?v=AGkM2jGT61Y
+	- Overview of the process: [here](https://www.youtube.com/watch?v=AGkM2jGT61Y)
 	- Using the `--new` `--files` and `--name` flags in `podman generate systemd` avoids conflicts with old service files and ensures a clean restart.
 		- Generate a systemd unit file for a rootful container, then copy and daemon-reload: 
 	```bash
@@ -88,6 +88,7 @@ if [ -z "$XDG_RUNTIME_DIR" ]; then
     export XDG_RUNTIME_DIR=/run/user/$(id -ru)
 fi
 ```
+
 ### Troubleshooting / Issues
 * If getting this error (came up after upgrading to Podman 5+):
 `Error: current system boot ID differs from cached boot ID; an unhandled reboot has occurred. Please delete directories "/tmp/containers-user-1001/containers" and "/tmp/podman-run-1001/libpod/tmp" and re-run Podman`
@@ -96,3 +97,8 @@ fi
   2 )  or an easier solution is to mount `/tmp` to a tmpfs and not xfs - enable `tmp.mount`
   3) set the temp directory in `/etc/containers/containers.conf`
 
+*If getting this error when trying to run commands against the container: 
+`Error: crun: writing file /sys/fs/cgroup/user.slice/user-1001.slice/user@1001.service/app.slice/a79d5d3bab4aac8a5c7c8d6ec481f551c6f93ff2b599d052083e7629f41dee82/cgroup.procs: Permission denied: OCI permission denied`
+- This has to do with cgroups and podman somehow failing to detect the current cgroup ownership. 
+- Running a prefix of `systemd-run --scope --user` should successfully execute the command against the container because it creates a proper systemd scope
+- Access the  container using ssh from the base machine. Do not login as `root` user and switch to 'non-root' `podman_service` user using `su` method.

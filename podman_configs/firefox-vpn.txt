@@ -1,0 +1,15 @@
+#start rootless container
+#create volume first
+#changed PUID and GUID from 1000 for permissions on rootless container
+#make sure gluetun is up and running correctly first
+podman run \
+  --name=firefox-vpn \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  --network=container:gluetun \
+  -v firefox_config:/config:Z \
+  -v firefox_cache:/cache:Z \
+  --restart unless-stopped \
+  linuxserver/firefox:latest

@@ -6,9 +6,9 @@
 |_____|_____\___/|_| \_/____|
                              
 ```
-
+This is my Proxmox setup and configuration
 # Proxmox 8 Setup
-_Updated July 2024_
+_Updated March 2025_
 
 Links:  
 https://www.youtube.com/watch?v=sZcOlW-DwrU
@@ -38,7 +38,7 @@ sudo apt install htop ncdu vim neofetch ranger
 ```
 - Turn on IOMMU if using PCI Passthru via GRUB (steps https://technotim.live/posts/first-11-things-proxmox/)
 ```shell
-nano /etc/default/grub
+vim /etc/default/grub
 ```
 add `iommu=pt` to `GRUB_CMDLINE_LINUX_DEFAULT` like so:
 
@@ -56,5 +56,18 @@ then reboot
 	![IMAGE](./assets/proxmox-backups.png)
 	![IMAGE](./assets/proxmox-backups2.png)
 
+### Cluster setup
+- General setup: [https://www.youtube.com/watch?v=Ghsa_pcgSvY](https://www.youtube.com/watch?v=Ghsa_pcgSvY)
+- Make sure there is a secondary NIC in each node for cluster traffic (labeled Cluster)
+![proxmox_cluster_IP.png](./assets/proxmox_cluster_IP.png)
+
+1. Create cluster 
+![proxmox_create_cluster.png](./assets/proxmox_create_cluster.png)
+2. Use Join information on the first node to join the second node 
+![proxmox_join_cluster.png](./assets/proxmox_join_cluster.png)
+3. Make sure all storage is added to all nodes and test migration
+4. Re-add homepage API keys, users, permissions from the section below
+
 ### Other configs
 - For homepage dashboard (or similar), follow [this link](https://gethomepage.dev/widgets/services/proxmox/) to properly create permissions and API key
+- Create user **leo** and copy minimal `.bashrc` and install starship, etc - `curl -sS https://starship.rs/install.sh | sh`

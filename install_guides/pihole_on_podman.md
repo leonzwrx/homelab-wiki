@@ -25,6 +25,8 @@ sudo firewall-cmd --reload
 sudo podman volume create pihole_pihole
 sudo podman volume create pihole_dnsmasq
 ```
+NOTE - may not need the second volume in v6
+
 4. Pull the image
 ```bash
 sudo podman pull docker.io/pihole/pihole

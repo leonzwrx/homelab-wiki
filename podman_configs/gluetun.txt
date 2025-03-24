@@ -6,15 +6,16 @@ podman run -d \
   --cap-add=NET_ADMIN \
   --device /dev/net/tun:/dev/net/tun \
   -v gluetun_config:/gluetun \
+  -v /var/lib/podman_service/.local/share/containers/storage/volumes/gluetun_config/config.toml:/gluetun/auth/config.toml \
   -e VPN_SERVICE_PROVIDER=protonvpn \
   -e VPN_TYPE=openvpn \
-  -e OPENVPN_USER=my_fucking_user_pmp \
-  -e OPENVPN_PASSWORD=my_fucking_password \
+  -e OPENVPN_USER=zhlY5i2h39pMd3KK+pmp \
+  -e OPENVPN_PASSWORD=3oj51jVFTQI3EM1lLRUp9liSpRHvnfz4 \
   -e SERVER_COUNTRIES=Netherlands \
   -e PORT_FORWARD_ONLY=on \
   -e VPN_PORT_FORWARDING=on \
   -e DNS_ADDRESSES=1.1.1.1,1.0.0.1 \
-  -e HEALTH_VPN_DURATION_INITIAL=120s \ 
+  -e HEALTH_VPN_DURATION_INITIAL=120s \
   -e TZ=America/Denver \
   -p 8282:8282 \
   -p 6881:6881 \
@@ -25,5 +26,8 @@ podman run -d \
   -p 8686:8686 \
   -p 8787:8787 \
   -p 9696:9696 \
+  -p 3300:3000 \
+  -p 8000:8000 \
+  -p 5055:5055 \
   --restart always \
   qmcgaw/gluetun:latest

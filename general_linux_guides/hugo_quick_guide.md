@@ -7,7 +7,7 @@
                              
 ```
 
-# Hugo quick guide - Ananke theme website
+# Hugo guide - Ananke theme website and analytics/optimization
 _Updated February 2025_
 
 * Verify `hugo` and `git` are installed
@@ -117,3 +117,57 @@ or to open a new tab, shortcode:
 11. Push to github repo, then publish to Cloudflare using instructions [here](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/)
 	**IMPORTANT**
 Setup 2 environmental variables in Cloudflare for this setup to work - `HUGO_VERSION` should be 0.143.1 or similar and `HUGO_ENV` should be set to **production**
+
+___
+
+## OTHER WEBSITE TASKS
+
+### **1. Submit Your Website to Google Search Console**
+Google Search Console (GSC) is a free tool that helps you monitor and troubleshoot your website’s presence in Google Search results. Here’s how to get started:
+- **Create a Google Search Console Account**: Go to [Google Search Console](https://search.google.com/search-console/) and sign in with your Google account.
+- **Add Your Website**: Click “Add Property” and enter your website’s URL.
+- **Verify Ownership**:
+  - Since you’re using Cloudflare Pages, you can verify ownership by adding a DNS TXT record via Cloudflare’s DNS settings.
+  - Alternatively, you can use the HTML file upload method (download the file from GSC and upload it to your Hugo site’s `static` folder, then redeploy).
+- **Submit Your Sitemap**: Hugo automatically generates a sitemap.xml file. Submit this to GSC by going to **Sitemaps** in the left-hand menu and entering `sitemap.xml`.
+
+___
+
+### **Step 1: Create a Google Analytics Account**
+1. Go to [Google Analytics](https://analytics.google.com/) and sign in with the same Google account you used for Google Search Console (or your business email).
+2. Click **Start measuring**.
+3. Set up an **Account Name** (e.g., "Hidden Jewels Travel").
+4. Configure your **Property**:
+   - Property name: `Hidden Jewels Travel Website`
+   - Time zone: Choose your business’s time zone.
+   - Currency: Choose your preferred currency.
+5. Click **Next** and fill in your business details (industry, size, etc.).
+6. Accept the terms and conditions.
+### **Step 2: Get Your Google Analytics Tracking Code**
+1. After setting up your property, you’ll be prompted to create a **Data Stream**.
+   - Choose **Web** as the platform.
+   - Enter your website URL (e.g., `https://hiddenjewelstravel.com`) and give it a stream name (e.g., "Hidden Jewels Travel Website").
+2. Click **Create Stream**.
+3. You’ll see your **Measurement ID** (e.g., `G-XXXXXXXXXX`). This is what you’ll use to connect Google Analytics to your Hugo site.
+### **Step 3: Add the Tracking Code to Your Hugo Site**
+Since you’re using the Ananke theme, you can add the Google Analytics tracking code to your site without modifying the theme files directly. Here’s how:
+
+1. Open your Hugo project in your code editor.
+2. Navigate to your site’s **configuration file** (usually `config.toml` or `config.yaml`).
+3. Add the following lines to enable Google Analytics:
+   ```toml
+   [params]
+     googleAnalytics = "G-XXXXXXXXXX"  # Replace with your Measurement ID
+   ```
+   If you’re using `config.yaml`, add:
+   ```yaml
+   params:
+     googleAnalytics: "G-XXXXXXXXXX"  # Replace with your Measurement ID
+   ```
+4. Save the file and redeploy your site. Hugo will automatically inject the Google Analytics tracking code into all pages.
+
+### **Step 4: Verify Google Analytics is Working**
+1. After redeploying your site, visit your website in a browser.
+2. Open the **Developer Tools** (usually by pressing `F12` or `Ctrl+Shift+I`).
+3. Go to the **Network** tab and filter by `collect`.
+4. Refresh the page. You should see a request to `https://www.google-analytics.com/g/collect` with a status of `200`. This confirms Google Analytics is working.

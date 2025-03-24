@@ -6,7 +6,7 @@
 |_____|_____\___/|_| \_/____|
 ```
 
-# OPENRGB & CKB-NEXT - Debian Bookworm
+# OpenRGB & ckb-next - Debian Bookworm
 
 _UPDATED JULY 2024_
 

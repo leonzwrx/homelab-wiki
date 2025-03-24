@@ -28,8 +28,7 @@ sudo podman pull docker.io/freshrss/freshrss:latest
 ```
 5. If using with full-text-rss - need to make sure there is a common network between containers that need to communicate (use the `--network rss-network` when creating containers that need to communicate):
 ```bash
-podman network create \
-    rss-network
+podman network create --dns=8.8.8.8 rss-network
 ```
 NOTE:  Once containers are online, they need to communicate to each other by their container name
 

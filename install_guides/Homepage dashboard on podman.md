@@ -13,9 +13,10 @@ _UPDATED February 2025_
 - [Homepage](https://gethomepage.dev/) homepage
 
 ### Pre-requisites
-1. Add necessary firewall ports to home zone (avoiding default ports 80 and 443)
+1. Add necessary firewall ports to home zone (avoiding default ports 80 and 443). Port 8000 is for gluetun's widget
 ```bash
 sudo firewall-cmd --permanent --zone=home --add-port=3000/tcp
+sudo firewall-cmd --permanent --zone=home --add-port=8000/tcp
 sudo firewall-cmd --reload
 ```
 2. Create podman volume:
@@ -38,4 +39,27 @@ NOTE: --privileged flag needed to read some resource values
 - Verify all `.env` values are set correctly
 - Configure widgets.yaml
 - Configure bookmarks.yaml if applicable
-and `.env` file is backed up
+- Make sure `.env` file is backed up
+
+**In order to get gluetun widget working, follow instructions [here](https://github.com/qdm12/gluetun-wiki/blob/main/setup/advanced/control-server.md)**
+- Create a `config.toml` file inside the podman host such as
+```toml
+[[roles]]
+name = "dashboard"
+# Define a list of routes with the syntax "Http-Method /path"
+routes = [
+  "GET /v1/openvpn/portforwarded",
+  "GET /v1/publicip/ip",
+  "GET /v1/openvpn/status"
+]
+# Define an authentication method with its parameters
+auth = "basic"
+username = "myusername"
+password = "mypassword"
+```
+- Make sure gluetun's config has these lines:
+```ini
+  -p 8000:8000/tcp \
+  -v /path/to/gluetun/config/config.toml:/gluetun/auth/config.toml \
+  ```
+- Verify the functionality of the API by visiting http://podmanhost:8000/v1/openvpn/status

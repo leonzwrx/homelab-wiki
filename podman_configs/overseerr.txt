@@ -1,0 +1,14 @@
+#start rootless container
+#create volume first (rename it later as it's misspelled)
+#changed PUID and GUID from 1000 for permissions on rootless container 
+#make sure gluetun is up and running correctly first
+podman run \
+  --name=overseerr \
+  --detach \
+  -e PUID=0 \
+  -e PGID=0 \
+  -e TZ=America/Denver \
+  --network=container:gluetun \
+  -v overseer_config:/config:Z \
+  --restart unless-stopped \
+  lscr.io/linuxserver/overseerr:latest
