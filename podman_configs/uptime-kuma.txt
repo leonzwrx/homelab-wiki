@@ -2,7 +2,7 @@
 #create volume first
 podman run \
 --detach \
---network="host" \
+--network="bridge" \
 -p 3001:3001 \
 --volume uptime-kuma_data:/app/data:Z \
 --name uptime-kuma louislam/uptime-kuma:latest

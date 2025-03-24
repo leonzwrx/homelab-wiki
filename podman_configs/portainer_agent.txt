@@ -8,4 +8,4 @@ podman run -d \
     -v portainer_agent_volume:/var/lib/docker/volumes:Z \
     --hostname portainer_agent \
     --network="bridge" \
-    :close
+    portainer/agent

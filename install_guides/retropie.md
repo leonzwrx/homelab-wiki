@@ -62,6 +62,8 @@ Refer to the video for additional configuration details: [Config video](https://
 
 ![IMG](https://hackster.imgix.net/uploads/attachments/394225/Retropie-hotkeys.png?auto=compress%2Cformat&w=740&h=555&fit=max)
 
+(**For my 8bitdo controllers, table above is linked to hotton button (button 10 + secondary button**)
+
 3. **Installing and Updating Packages:**
    - From the RetroPie setup script, manage packages:
      - **Core Packages:** `runcommand`, `EmulationStation` (if not already installed)
