@@ -46,3 +46,6 @@ PATH          NAME     FLAGS
 ```
 
 + To uninstall, run `sudo uninstall_urbackupclient`
+
+**Officially, only the Windows client being able to perform image backups**
+

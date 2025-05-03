@@ -39,7 +39,8 @@ cp -r themes/ananke/exampleSite/content ../../../
 hugo server
 ```
 4. Create a `.gitignore` with this content:
-   ```
+
+  ```bash
    # Hugo output directories
     public/
 	resources/
@@ -49,7 +50,7 @@ hugo server
 	# Local dev & system filesppi
 	.DS_Store
 	Thumbs.db
-
+  ```
 NOTE: These are essential for Hugo to generate the site correctly:
 
 **Required Files/Folders for commits: - y.**
