@@ -44,7 +44,7 @@ _Updated July 2024_
 * **`lvscan`**: Scans for logical volumes.
 
 ### Extending a Logical Volume
-```shell
+```bash
 cfdisk /dev/sda                        # create new partition, using all free space
 pvcreate /dev/sdaX                     # initialize partition for use with LVM
 vgdisplay                              # to find VG name
@@ -57,7 +57,7 @@ resize2fs /dev/vgname/root             # this extends the filesystem
 
 1. **Identify the new disk:**
    * Use `fdisk -l` to identify the device name (e.g., `/dev/sda`).
-   * Confirm the new disk size.
+   * Confirm the new disk size. If disk isn't found , execute `echo 1 | sudo tee /sys/class/block/sda/device/rescan`
 
 2. **Create a new partition:**
    * Use `fdisk /dev/sda` (or the appropriate device).
@@ -88,7 +88,7 @@ resize2fs /dev/vgname/root             # this extends the filesystem
    * Identify the logical volume to extend (use `lvdisplay`).
    * Extend the logical volume by a specific size:
      ```bash
-     lvextend -L+50G /dev/VolGroup1/LogVol00
+     lvextend -L +50G /dev/VolGroup1/LogVol00
      ```
      Replace `/dev/VolGroup1/LogVol00` with the actual logical volume path and adjust the size as needed.
    * Alternatively, use `lvextend -l +100%FREE /dev/VolGroup1/LogVol00` to use all available free space.

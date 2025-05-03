@@ -8,7 +8,7 @@
 
 # Apache Guacamole on podman
 
-_UPDATED January 2025_
+_UPDATED April 2025_
 
 - Using [this](https://github.com/abesnier/docker-guacamole) project as a single container (vs. standard 3 container setup)
 
@@ -29,5 +29,5 @@ podman volume create guacamole-config
 - Set up Caddy with appropriate reverse proxy settings in the Caddyfile [as seen here](https://github.com/leonzwrx/homelab-wiki/install_guides/caddy_on_podman.md)
 - Setup new user(s), delete default guacadmin
 - Setup all of the connections, preferences
-- For VNC connections to Wayland desktop/sway - need to start `wayvnc` with the following  command (should be located inside a script in ~/.local/bin)
+- For VNC connections to Wayland desktop (**existing** session)- need to start `wayvnc` with the following  command (should be located inside a script in ~/.local/bin)
 `WAYLAND_DISPLAY=wayland-1 wayvnc -C /home/leo/.config/wayvnc/config &`

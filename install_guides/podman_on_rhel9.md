@@ -71,6 +71,15 @@ podman unshare cat /proc/self/uid_map
 Restart=always
 RestartSec=5
 ```
+### 5 [OPTIONAL] Automated backups
+1. Get [podcheck](https://github.com/sudo-kraken/podcheck?ref=selfh.st) script project
+```bash
+# Using curl:
+curl -L https://raw.githubusercontent.com/sudo-kraken/podcheck/main/podcheck.sh -o /usr/local/bin/podcheck.sh
+chmod +x /usr/local/bin/podcheck.sh
+```
+2. Use `./podcheck.sh -h` for syntax
+
 ### Notes
 * Ensure the `podman_service` user has appropriate permissions to access the Podman socket and volumes.
 * Default storage location for rootful containers is `/var/lib/containers/storage`and for rootless - `$HOME/.local/share/containers/storage`
