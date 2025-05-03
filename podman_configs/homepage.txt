@@ -7,5 +7,6 @@ podman run -d \
   -v homepage-config:/app/config:Z \
   --privileged \
   --dns=10.89.1.9 \
+  -e HOMEPAGE_ALLOWED_HOSTS='rhel9-apps.nilva.local:3000' \
   --env-file ~/homepage/.env \
   ghcr.io/gethomepage/homepage:latest

@@ -6,8 +6,19 @@
 |_____|_____\___/|_| \_/____|
                              
 ```
-# Podman - updating containers (manually)
+# Podman - updating containers
 _Updated November 2024_
+
+## Automated process
+**Get Podcheck Script**  [here](https://github.com/sudo-kraken/podcheck?ref=selfh.st)
+```bash
+# Using curl:
+curl -L https://raw.githubusercontent.com/sudo-kraken/podcheck/main/podcheck.sh -o /usr/local/bin/podcheck.sh
+chmod +x /usr/local/bin/podcheck.sh
+```
+Use `./podcheck.sh -h` for syntax
+
+## Manual process
 
 **Understanding the Process:**
 
