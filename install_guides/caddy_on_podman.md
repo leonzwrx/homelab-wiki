@@ -64,15 +64,14 @@ Caddy file below that shows 2 scenarios where all SSL is managed by Cloudflare a
 
 ```
 http://rss.nilva.net {
-        reverse_proxy rhel9-apps.nilva.local:8081
+	reverse_proxy rhel9-apps.nilva.local:8081
 }
 
-http://portainer.nilva.net {
-        reverse_proxy https://rhel9-apps.nilva.local:9443 {
-         transport http {
-          tls
-          tls_insecure_skip_verify
-        }
-   }
+http://remote.nilva.net {
+	reverse_proxy rhel9-apps.nilva.local:8194
+}
+
+http://watchlist.nilva.net {
+	reverse_proxy rhel9-apps.nilva.local:5055
 }
 ```
