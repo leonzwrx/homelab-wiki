@@ -51,18 +51,17 @@ this may include some custom extensions:
 - Configure sharing options and email (configure `/data/config.php`)
   (may need to add Google's app password / API key and use that as a password below)
   ```
-	'mailer' => 'smtp',
-  'smtp' =>
   array (
-    'hostname' => 'smtp.gmail.com',
+    'hostname' => 'gmail.com',
     'host' => 'smtp.gmail.com',
-    'port' => 587,
+    'port' => 465,
     'auth' => true,
     'auth_type' => '',
-    'username' => 'leonid.nilva@gmail.com',
-    'password' => 'App password',
-    'secure' => 'tls',
-    'from' => 'email@gmail.com',
+    'username' => 'user@gmail.com',
+    'password' => 'fuck you',
+    'secure' => 'ssl',
+    'from' => 'user@gmail.com',
+  ),
     ```
 
 ## Feed Aggregator

@@ -8,4 +8,7 @@ podman run -d --log-opt max-size=10m \
   -v freshrss_extensions:/var/www/FreshRSS/extensions:Z \
   --network rss-network \
   --name freshrss \
-  freshrss/freshrss
+  docker.io/freshrss/freshrss:latest
+
+
+
