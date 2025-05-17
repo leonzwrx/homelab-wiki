@@ -74,7 +74,7 @@ _Updated April 2025_
 
 **WORKFLOW - BASE**
 1. Exposure. Use  lightbulb (Ctrl-B for white border reference)
-2. Color Calibration.  _Instead of White Balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune.
+2. Color Calibration.  _Instead of White Balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using Color Calibration in the pipeline
 3. Crop
 4. Rotate & Perspective. Right-click to draw a line that will align the photo
 5. Tone Equalizer (Shadows & Highlights is a simpler alternative):
@@ -100,7 +100,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
      - Use _global offset luminance_ slider to adjust black level for more contrast adjustments
 2. Sigmoid - should already be set. Use **smooth** profile as an option for a good look as an  option
      - Adjust _contrast_ slider if needed and _skew_ slider to move contrast towards highlights or shadows
-     - _preserve hue_ slider may or may not make a photo more interesting
+     - _preserve hue_ slider may or may not make a photo more interesting. 38% works well
      - _target_ sliders usually OK to stay at default but similar to luminance sliders used in ColorRGB
      - _primaries_ sliders for each color add or decrease colors in **highlights** only
 
@@ -116,7 +116,8 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 
 **WORKFLOW - CREATIVE**
 1. Diffuse or sharpen - select preset sharpen demosaicing AA filter should provide a natural sharpness level
-2. Contrast Equalizer - similar to Clarity in Lightroom when _clarity_ preset is used
+   _Lens deblur medium_ is another good preset for shaprness
+2. Contrast Equalizer -similar to Clarity in Lightroom when _clarity_ preset is used
    - On the _Luma_ tab, use mix slider to change positive or negative clarity
    - If more control is needed in just coarse areas or fine areas, adjust parts of the graph. Increasing _fine_ areas adds more sharpness/micro-contrast. Or bring down the _[coarse](https://www.canon-europe.com/cameras/eos-r6-mark-ii/specifications/)_ side to apply negative clarity without messing with sharpness
 3. [OPTIONAL] Glowing effect. Diffuse or sharpen - make new instance, apply preset bloom, adjust opacity
@@ -129,6 +130,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 **AFTERWARDS**
 1. Export photo, (re) apply any styles
 2. Tag as needed including style
+3. Geotag
    
 ## Masking
 **Example - Parametric**
@@ -146,15 +148,16 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 * For LUTs - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the LUT
 * Download .dtstyle files and store in `~/Pictures/Darktable`
 * Create a style by compressing history stack first - important to click 'module order'
-
+	> If using a style, indicate the style name in the snapshot and/or duplicate. There  should also be  an associated tag with the style
+  
 ### t3mujinpak - Popular & Versatile Styles: 
 
 * **Black & White:**
-
-  * **Ilford HP5 Plus 400:** A classic black and white film known for its versatility, good grain structure, and pleasing tonality. Often a go-to for general B&W work.
-  * **Kodak Tri-X 400:** Another iconic B&W film, often favored for its distinctive grain and contrast. Great for a more gritty or dramatic B&W look.
-  * **Ilford Delta 100:** Known for its very fine grain and smooth tonality, excellent for high-detail B&W images.
-  * **Fuji Neopan Acros 100:** Known for its extremely fine grain and high sharpness, often favored by architectural and landscape photographers.
+ > If manually converting to B&W, Color Calibration module has good film presets
+* **Ilford HP5 Plus 400:** A classic black and white film known for its versatility, good grain structure, and pleasing tonality. Often a go-to for general B&W work.
+* **Kodak Tri-X 400:** Another iconic B&W film, often favored for its distinctive grain and contrast. Great for a more gritty or dramatic B&W look.
+* **Ilford Delta 100:** Known for its very fine grain and smooth tonality, excellent for high-detail B&W images.
+* **Fuji Neopan Acros 100:** Known for its extremely fine grain and high sharpness, often favored by architectural and landscape photographers.
 
 * **Color Negative:**
 
@@ -198,9 +201,25 @@ Hovering over the preset in a module (like LUTs) allows you to use the mouse whe
   3 stars for a photo I would put up on my wall
   4/5 stars for a portfolio-worthy photo
 
-  **Colors**
-  red
-  yellow
-  green
-  blue
-  purple  = editing completed
+  **Color ratings**
+🟣 Purple: Editing done, finished
+
+🔴 Red: "Needs Editing"
+
+Photos that are flagged for editing but not yet started.
+
+Example: Raw files that are high-priority or part of a client project.
+
+🟡 Yellow: "In Progress"
+
+Photos you’re actively editing (e.g., halfway through adjustments).
+
+Helps avoid duplication of effort.
+
+🟢 Green: "Ready for Export"
+
+Edited photos that just need final export (resizing, sharpening, etc.).
+
+🔵 Blue: "To Review/Client Feedback"
+
+Photos requiring a second look or client approval before finalizing.
