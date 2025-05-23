@@ -91,8 +91,8 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
    **_COLOR_**:
    Master tab:
    - Use _global vibrance_ slider to adjust overall colorfullness but if not enough, then:
-   - [OPTIONAL] _Saturation_ sliders apply absolute amount (standard preset already adds some saturation)
    - [OPTIONAL] _Chroma_ sliders adjust colors without affecting luminance
+   - [OPTIONAL] _Saturation_ sliders apply absolute amount (standard preset already adds some saturation)
     **_CONTRAST_**: - optionally make a separate instance from Saturation above
      master tab:
 	 - Adjust mid-tones, shadows and highlights under _brilliance_ grading
@@ -128,9 +128,11 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 8. Watermark
 
 **AFTERWARDS**
-1. Export photo, (re) apply any styles
-2. Tag as needed including style
-3. Geotag
+1. Check for any clipping (o)
+2. Export photo, (re) apply any styles
+3. Tag as needed including style
+4. Geotag
+5. Rate and/or apply color rating
    
 ## Masking
 **Example - Parametric**
@@ -139,10 +141,17 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 - Use sliders to make exact or smooth selection area
 - Use feathering to decrease harshness in the mask
 - Turn off preview (unselect yellow)
-- Make adjustments such as contast, brilliance shadows, highlights, etc
 - Use module's power button to see before/after of the module w/mask applied
 - To reuse masks, use Mark Manager and select existing masks or mask groups  from another module
-**Uniformity** provides opacity/strength for ANY module
+
+TIPS:
+
+- Right-clicking a mask on the image removes it
+- When using Elliptical mask, shift-left click changes feather from proportional ratio to uniform
+- When using path mask using Ctrl-left click for hard shapes like triangles
+- Ctrl-click to add a node to an existing mask to make a more detailed mask shape. Right-click on node to remove the node
+- Use eye dropper to select exact color for the channel sliders 
+- **Uniformity** provides opacity/strength for ANY module
 
 ## Styles, Presets, etc
 * For LUTs - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the LUT
@@ -185,7 +194,8 @@ lensfun-update-data #use sudo for system-wide update
 
 Right-Click for Value Input: right-clicking on sliders or numerical values allows you to type in precise values. 
 Double-Click to Reset: Double-clicking on a slider or numerical value resets it to its default setting.
-Scroll Wheel for Fine Adjustments: Use your mouse scroll wheel to make small adjustments to sliders. Holding Shift while scrolling allows for even finer adjustments.
+Ctrl-Alt to scroll without using scroll bar
+Scroll Wheel for Fine Adjustments: Use your mouse scroll wheel to make small adjustments to sliders. Holding Shift or Ctrl while scrolling allows for coarser/finer adjustments.
 Middle mouse button is 200% zoom
 Clicking on a brush or shape (like in masking) while holding CTRL keeps the brush enabled (vs exiting the brush)
 When using a tool - to zoom instead of adjusting a control/shape, hold down the ‘a’ key while scrolling
@@ -204,17 +214,11 @@ Hovering over the preset in a module (like LUTs) allows you to use the mouse whe
   **Color ratings**
 🟣 Purple: Editing done, finished
 
-🔴 Red: "Needs Editing"
-
-Photos that are flagged for editing but not yet started.
+🔴 Red: "Needs Editing" - photos that are flagged for editing but not yet started.
 
 Example: Raw files that are high-priority or part of a client project.
 
-🟡 Yellow: "In Progress"
-
-Photos you’re actively editing (e.g., halfway through adjustments).
-
-Helps avoid duplication of effort.
+🟡 Yellow: "In Progress" - Photos you’re actively editing (e.g., halfway through adjustments).
 
 🟢 Green: "Ready for Export"
 
