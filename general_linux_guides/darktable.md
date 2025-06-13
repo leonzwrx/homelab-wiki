@@ -63,6 +63,7 @@ _Updated April 2025_
 - Color Zones for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if Color Equalizer doesn't suffice
 - Velvia - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
 - Hot Pixels - remove abnormally bright pixels
+- Graduated density - Simulate optical graduated ND filter
 
 ### OPTION 2 - Modified Scene-Referred workflow modules
 ![darktable_scene_referred_modules.png](./assets/darktable_scene_referred_modules.png)
@@ -129,7 +130,8 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 
 **AFTERWARDS**
 1. Check for any clipping (o)
-2. Export photo, (re) apply any styles
+2. Export photo, (re) apply any styles -  90% quality good for most uses with manageable file size. Use sRGB profile and high quality resampling options
+    **TIP:** Hold down the left mouse button on a thumbnail to temporarily show that version in the center view.
 3. Tag as needed including style
 4. Geotag
 5. Rate and/or apply color rating
@@ -183,8 +185,6 @@ TIPS:
 
 ## Misc.
 - Use duplicates for things like mutiple versions of the same photo (different styles, crops, frames) or to test edits safely
-- Exporting - 90% quality good for most uses with manageable file size. Use sRGB profile and high quality resampling options
-**TIP:** Hold down the left mouse button on a thumbnail to temporarily show that version in the center view.
 **Update lens and camera database**
 ```bash
 sudo apt install liblensfun-bin
