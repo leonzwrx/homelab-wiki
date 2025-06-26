@@ -8,7 +8,7 @@
 ```
 
 # Post-Installation Steps for RHEL 9 Server
-_Updated August 2024_
+_Updated June 2025_
 
 **General steps**
 - For a basic RHEL9 VM, follow most defaults, automatic partitioning and disable root
@@ -47,3 +47,8 @@ curl -sS https://starship.rs/install.sh | sh
 - Enable Cockpit and set firewall zone to home:
 `systemctl enable cockpit.service --now`
 `firewall-cmd --set-default-zone=home`
+
+### Others
+```
+dnf install command-line-assistant
+```
