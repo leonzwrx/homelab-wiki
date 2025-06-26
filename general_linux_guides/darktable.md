@@ -10,6 +10,11 @@
 # Darktable - Configs, workflow, settings
 _Updated April 2025_
 
+## [CREDITS]
+
+[Kevin Ajili](https://www.youtube.com/@kevinajili)
+[Darktable Landscapes](https://www.youtube.com/@DarktableLandscapes)
+
 **Darktable Workflow (Lightroom User Transition)**
 
 1. Before editing, use **Lighttable** to reject/pick/rate photos
@@ -99,9 +104,9 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 	 - Adjust mid-tones, shadows and highlights under _brilliance_ grading
      4-ways tab:
      - Use _global offset luminance_ slider to adjust black level for more contrast adjustments
-2. Sigmoid - should already be set. Use **smooth** profile as an option for a good look as an  option
+2. Sigmoid - should already be set. Use **smooth** profile as an option for a good look especially for photos with heavy highlights like sunsets
      - Adjust _contrast_ slider if needed and _skew_ slider to move contrast towards highlights or shadows
-     - _preserve hue_ slider may or may not make a photo more interesting. 38% works well
+     - _preserve hue_ slider may or may not make a photo more interesting (such as to make highlights glow more, like fire or sunsets). 38% works well
      - _target_ sliders usually OK to stay at default but similar to luminance sliders used in ColorRGB
      - _primaries_ sliders for each color add or decrease colors in **highlights** only
 
@@ -158,9 +163,13 @@ TIPS:
 ## Styles, Presets, etc
 * For LUTs - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the LUT
 * Download .dtstyle files and store in `~/Pictures/Darktable`
+* If saving a new style, only save relevant modules and avoid defaults like Sigmoid which will be auto-applied anyway
 * Create a style by compressing history stack first - important to click 'module order'
 	> If using a style, indicate the style name in the snapshot and/or duplicate. There  should also be  an associated tag with the style
-  
+* If using  [Kevin's creative styles](https://github.com/kajili/darktable-styles) , exposure and color/calibration are excluded  - those still have to be applied per photo
+* If updating a style, compress history stack, make changes, compress history stack again before re-saving with the same exact name,overwrite
+* When applying a style - use 'overwrite' for creative/general styles and 'append' for _tools_ type of styles
+
 ### t3mujinpak - Popular & Versatile Styles: 
 
 * **Black & White:**
