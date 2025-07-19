@@ -8,25 +8,25 @@
 ```
 
 # Darktable - Configs, workflow, settings
-_Updated April 2025_
+_Updated July 2025_
 
 ## [CREDITS]
 
 [Kevin Ajili](https://www.youtube.com/@kevinajili)
 [Darktable Landscapes](https://www.youtube.com/@DarktableLandscapes)
 
-**Darktable Workflow (Lightroom User Transition)**
+**Lighttable Workflow, prior to editing**
 
-1. Before editing, use **Lighttable** to reject/pick/rate photos
-2. Apply tags, collections, any other metadata
-3. Apply styles if needed
-4. Edit in Darktable below
-5. Apply any other colors/ratings for export, if needed
-6. Delete rejected photos
+1. Import from existing directory, apply any metadata presets
+2. Reject/pick/rate photos
+3. Apply tags, collections, any other metadata
+5. Apply styles if needed
+6. Edit in Darktable below
 
 ## Tools & Modules - Lightroom comparison
-> Reference [this video](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
-> Reference [this video](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
+> Reference [this video from Darktable Landscapes](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
+> Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
+> If stitching Panoramas using hugin, use [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)  for reference. Edit after exporting/stitching
 
 ![darktable_basics.png](./assets/darktable_basics.png "darktable_basics.png")
 ![darktable_color_grading.png](./assets/darktable_color_grading.png)
@@ -38,9 +38,8 @@ _Updated April 2025_
 > Using basic styles like in-camera JPEG rendition is a good starting point - These styles only affect contrast, brightness, and saturation and do not attempt to match **sharpening, denoising, or hue shifts**.  There is also a Lua script to auto-apply the appropriate style on import and manually apply styles to a collection of previously-imported images.
 > When applying a style, it's best to start with the original, unedited image in the history stack
 > Workflow should focus around OSC principal (Overall, Subject, Colors)
-> Use Exposure module's (additional) Dodge & Burn Presets after basics are done (before color adjustments) if needed
 
-### OPTION 1 - Lightroom-style workflow modules
+### OPTION 1 - Lightroom-style  workflow modules
 
 | Darktable Module (Suggested Order)                        | Lightroom Equivalent                                         | Notes                                                                                                                                                                                                                                                             |
 |-----------------------------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,12 +79,12 @@ _Updated April 2025_
 
 **WORKFLOW - BASE**
 1. Exposure. Use  lightbulb (Ctrl-B for white border reference)
-2. Color Calibration.  _Instead of White Balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using Color Calibration in the pipeline
+2. Color Calibration.  _Instead of White Balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using Color Calibration in the pipeline.  Check that “area color mapping” is set to (50, 0°, 0)
 3. Crop
 4. Rotate & Perspective. Right-click to draw a line that will align the photo
 5. Tone Equalizer (Shadows & Highlights is a simpler alternative):
    - The Advanced tab shows a curve that represents the adjustments. Its histogram shows the mask it creates.
-    - The Masking tab helps create a mask based on tonal values.
+    - The Masking tab helps create a mask based on tonal values. **The entire module has its own mask via this tab**
     - The "magic wands" can help create an initial mask.
     - Verify the mask doesn't cause clipping (indicated by colors).
     - Use "Guided Filter" or "EIGF" (preserves contrast)  for smoother transitions.
@@ -93,7 +92,7 @@ _Updated April 2025_
 A good starting preset without even using mask is often "Compress Shadows EIGF soft," then adjust the curve.
 
 **WORKFLOW - COLOR**
-1. Color Balance RGB - used for both Saturation & Contrast - use either same instance or separate
+1. Color Balance RGB - used for both Saturation & Contrast - use either same instance or separate. OK to generally increase saturation in the shadows and decrease it in the highlights. 
    **_COLOR_**:
    Master tab:
    - Use _global vibrance_ slider to adjust overall colorfullness but if not enough, then:
@@ -114,6 +113,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 1. RGB Primaries - simpler channel mixer for broader changes before Color Equalizer is used for more detailed adjustments
    - Change hue of each channel towards opposite color (reds towards magenta, etc). Purity controls saturation
 2. Color Equalizer - adjust specific colors or use **picker** on the image, then use _node placement_ to align the dot
+        > Color look up table module can be used for quick color replacements with color picker tool 
     - Hue tab is rarely used since RGB Primaries shoud do a good job. Middle-click to reveal sliders for each color
     - brightness and saturation tabs can be used for fine adjustments
 3. Color Balance RGB - used for split toning (make a new instance) in the **4-ways tab**
@@ -140,6 +140,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 3. Tag as needed including style
 4. Geotag
 5. Rate and/or apply color rating
+6. Delete rejected photos
    
 ## Masking
 **Example - Parametric**
@@ -233,6 +234,13 @@ Example: Raw files that are high-priority or part of a client project.
 
 Edited photos that just need final export (resizing, sharpening, etc.).
 
-🔵 Blue: "To Review/Client Feedback"
+🔵 Blue: Part of Panorama stack while editing. Delete/reject later
 
-Photos requiring a second look or client approval before finalizing.
+**Hugin panorama stitcher tips**
+- Keep resolution dimensions during export from Darktable and for Panorama (R6m2 is 6022x4024)
+- Use _straighten_ button on the Move/Drag tab
+- Use  Projection tab to set type of pano:
+	 Rectilinear: Good for narrow panoramas
+    Cylindrical: Good for wide, horizontal panoramas
+- Save project files and pano TIFFs (tar themi)
+`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will reimport EXIF info 
