@@ -10,7 +10,7 @@ podman run -d \
   -e VPN_SERVICE_PROVIDER=protonvpn \
   -e VPN_TYPE=openvpn \
   -e OPENVPN_USER=USER+pmp \
-  -e OPENVPN_PASSWORD=FUCKYOU! \
+  -e OPENVPN_PASSWORD=FUCKYOU!!! \
   -e SERVER_COUNTRIES=Netherlands \
   -e PORT_FORWARD_ONLY=on \
   -e VPN_PORT_FORWARDING=on \
