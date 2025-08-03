@@ -9,8 +9,8 @@ podman run -d \
   -v /var/lib/podman_service/.local/share/containers/storage/volumes/gluetun_config/config.toml:/gluetun/auth/config.toml \
   -e VPN_SERVICE_PROVIDER=protonvpn \
   -e VPN_TYPE=openvpn \
-  -e OPENVPN_USER=zhlY5i2h39pMd3KK+pmp \
-  -e OPENVPN_PASSWORD=3oj51jVFTQI3EM1lLRUp9liSpRHvnfz4 \
+  -e OPENVPN_USER=USER+pmp \
+  -e OPENVPN_PASSWORD=FUCKYOU! \
   -e SERVER_COUNTRIES=Netherlands \
   -e PORT_FORWARD_ONLY=on \
   -e VPN_PORT_FORWARDING=on \
@@ -26,7 +26,7 @@ podman run -d \
   -p 8686:8686 \
   -p 8787:8787 \
   -p 9696:9696 \
-  -p 3300:3000 \
+  -p 3300:3001 \
   -p 8000:8000 \
   -p 5055:5055 \
   --restart always \
