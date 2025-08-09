@@ -39,7 +39,7 @@ sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.
 
 ### Install Basics
 ```bash
-sudo dnf install htop ncdu vim neofetch ranger git
+sudo dnf install btop htop ncdu vim neofetch ranger git
 #install starship
 curl -sS https://starship.rs/install.sh | sh
 ```
