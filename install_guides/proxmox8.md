@@ -14,7 +14,7 @@ Links:
 https://www.youtube.com/watch?v=sZcOlW-DwrU
 https://www.youtube.com/watch?v=GoZaMgEgrHw
 https://technotim.live/posts/first-11-things-proxmox
-https://tteck.github.io/Proxmox/#proxmox-ve-post-install
+https://community-scripts.github.io/ProxmoxVE/scripts?id=post-pve-install
 
 ### General steps
 - Follow most defaults during install
@@ -23,7 +23,7 @@ https://tteck.github.io/Proxmox/#proxmox-ve-post-install
 
 - Run Proxmox VE Post Install scripts from :
 ```bash
-    -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/tools/pve/post-pve-install.sh)"
 ```
 - correct update sources
 - disable pve-enterprise repos
