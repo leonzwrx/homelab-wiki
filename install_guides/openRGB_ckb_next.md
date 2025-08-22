@@ -8,23 +8,25 @@
 
 # OpenRGB & ckb-next - Debian Bookworm
 
-_UPDATED JULY 2024_
+_UPDATED August 2025_
 
 _This guide shows how to install and configure my instance of OpenRGB to control RGB-enabled peripherals connected to ASUS motherboard as well as ckb-next application to control RGB on Corsair mouse/keyboard_
  
 ***
 - General install guide: https://gitlab.com/CalcProgrammer1/OpenRGB#linux
 - Youtube tutorial: [![IMAGE_ALT](https://img.youtube.com/vi/uJofwpZl6y4/0.jpg)](https://www.youtube.com/watch?v=uJofwpZl6y4)
+- Since ckb-net application has more granular control of mouse /keyboard buttons and actions, OpenRGB's profiles are not set to control lighting on those
 ***
-### General Steps for OPEN RGP on ASUS Motherboard (Intel):
+### General Steps for OPEN RGB on ASUS Motherboard (Intel):
 - Create a Timeshift snapshot
+- > **As of August 2025, I cannot get .deb package to install on Debian Trixie. Using AppImage . However, running server mode doesn't seem to work**
 ```bash
 sudo apt install openrgb_0.9_amd64_bookworm_b5f46e3.deb  #install deb
 sudo apt install i2c-tools #install i2c tools
 sudo modprobe i2c-dev #load intel kernel module
 ```
 
-- Verify modules are loaded, if not load them manually using modprobe. The .deb package should install the udev rules automatically, which is needed to detect certain devices and run things without root
+- Verify modules are loaded, if not load them manually using modprobe. The .deb package should install the udev rules automatically, which is needed to detect certain devices and run things without root. If not, install the rules by running the [script](https://openrgb.org/releases/release_0.9/openrgb-udev-install.sh)
 ```bash
 lsmod | grep i2c
 i2c_algo_bit           12288  2 amdgpu,nouveau
@@ -37,6 +39,7 @@ i2c_smbus              16384  1 i2c_i801
 - Set appropriate profile settings and save
 	+ Download the install OpenRGB Effects Plugin from https://openrgb.org/plugins.html
 - Verify all settings work correctly, setup, configure profiles, then set up autostart via sway or another startup method (I could not get systemd service to work on startup):
+**This only works with .deb install**
 	```
 	  /usr/bin/openrgb --server -p ASUS_only --config /home/leo/.config/OpenRGB
 	```

@@ -243,4 +243,8 @@ Edited photos that just need final export (resizing, sharpening, etc.).
 	 Rectilinear: Good for narrow panoramas
     Cylindrical: Good for wide, horizontal panoramas
 - Save project files and pano TIFFs (tar themi)
-`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will reimport EXIF info 
+`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will reimport EXIF info
+
+## Installation, etc
+- On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo doesn't seem to work as of August 2025
+- To check if OpenCL is available - run `darktable-cltest`

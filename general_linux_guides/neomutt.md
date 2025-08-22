@@ -8,7 +8,7 @@
 ```
 
 # neomutt & mutt-wizard  Setup & Config
-_Updated June 2025_
+_Updated August 2025_
 
 ### General setup
 - Install and run mutt-wizard (reference [https://www.youtube.com/watch?v=iwYL3JzVVXM](https://www.youtube.com/watch?v=iwYL3JzVVXM))
@@ -55,6 +55,8 @@ ___
 > 6. Initialize - this creates the `~/.password-store` directory, linked to your existing key.
 > `pass init email@gmail.com`
 > 7. **Crucial step: Copy your existing `~/.password-store` from your old computer to your new one.** This contains your actual encrypted passwords. 
+
+**Another option - copy `~/.gnupg` from another machine or from backups, use `gpg --list-sercret-keys` to verify**
 
 ### Continue here after keys are set or imported
 1. **Clone Your Dotfiles Repository:** This will bring in your `~/.config/mutt/muttrc` and `~/.config/mutt/accounts/` files.
