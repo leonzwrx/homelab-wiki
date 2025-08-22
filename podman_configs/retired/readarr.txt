@@ -13,4 +13,4 @@ podman run \
   -v /mnt/media/books:/books \
   -v /mnt/media/downloads:/downloads \
   --restart unless-stopped \
-  linuxserver/readarr:develop
+   ghcr.io/faustvii/readarr
