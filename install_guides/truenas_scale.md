@@ -37,6 +37,9 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
 - Restrict networking to specific local subnets or individual hosts
 
 ### Management stuff
+ 
+- Set up email, test
+![truenas_email.png](./assets/truenas_email.png)
 - enable SSH and copy ssh pub key for passwordless login, then disable ssh using password
  ```bash
 ssh-copy-id admin@nasty.nilva.local
