@@ -2,6 +2,7 @@
 #create volume first
 #changed PUID and GUID from 1000 for permissions on rootless container
 #make sure gluetun is up and running correctly first
+#until some of the newer readarr forks become more stable, sticking with this one
 podman run \
   --name=readarr \
   --detach \
@@ -13,4 +14,4 @@ podman run \
   -v /mnt/media/books:/books \
   -v /mnt/media/downloads:/downloads \
   --restart unless-stopped \
-   ghcr.io/faustvii/readarr
+  ghcr.io/linuxserver/readarr@sha256:4f291128d1a5538be73c2a30473d7cdd0820e223dc8b8533b0cbc5659000dcbe
