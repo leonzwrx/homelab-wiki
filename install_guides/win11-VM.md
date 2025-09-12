@@ -30,12 +30,7 @@ _Updated July 2024_
     * Review and disable unnecessary tasks in Task Scheduler.
     * Review and disable unnecessary shell startup entries.
     * Disable unneeded system tray icons.
+    * Configure theming w/blue-gray colors
+    
 
-- Lightroom config:
-    * Block via Symantec EP (if applicable).
-    * Import Catalog.
-    * Configure watermarks and plugins.
-    * Add custom logos.
-    * Disable unnecessary modules.
-    * Review preferences.
-    * Import presets.
+
