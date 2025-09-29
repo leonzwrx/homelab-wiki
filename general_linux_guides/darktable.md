@@ -17,7 +17,7 @@ _Updated October 2025_
 **Lighttable Workflow, prior to editing**
 
 1. Import from existing directory, apply any metadata presets
-2. Reject/pick/rate photos
+2. Reject/pick/color [rate](#rating-system)
 3. Apply tags, collections, any other metadata
 5. Apply styles if needed
 6. Edit in Darktable below
@@ -59,7 +59,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
      - Use _global offset luminance_ slider to adjust black level for more contrast adjustments
 2. Sigmoid - should already be set. Use **smooth** profile as an option for a good look especially for photos with heavy highlights like sunsets
      - Adjust _contrast_ slider if needed and _skew_ slider to move contrast towards highlights or shadows
-     - _preserve hue_ slider may or may not make a photo more interesting (such as to make highlights glow more, like fire or sunsets). 38% works well
+     - _preserve hue_ slider may or may not make a photo more interesting (such as to make highlights glow more, like fire or sunsets). **38%** works well
      - _target_ sliders usually OK to stay at default but similar to luminance sliders used in ColorRGB
      - _primaries_ sliders for each color add or decrease colors in **highlights** only
 
@@ -93,7 +93,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 - Hot Pixels - remove abnormally bright pixels
 - Graduated density - Simulate optical graduated ND filter
 
-### OPTION 2 - Lightroom-style  workflow modules
+### [⚠ NO LONGER USING] OPTION 2 - Lightroom-style  workflow modules
 > Reference [this video from Darktable Landscapes](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
 #### Tools & Modules - Lightroom comparison
 ![darktable_basics.png](./assets/darktable_basics.png "darktable_basics.png")
@@ -151,7 +151,7 @@ TIPS:
 - When using path mask using Ctrl-left click for hard shapes like triangles
 - Ctrl-click to add a node to an existing mask to make a more detailed mask shape. Right-click on node to remove the node
 - Use eye dropper to select exact color for the channel sliders 
-- **Uniformity** provides opacity/strength for ANY module
+- **Uniformity** provides opacity/strength for ANY module.  It's an easy way to back down the effect of a full module stack.
 
 ## Styles, Presets, etc
 > Using basic styles like in-camera JPEG rendition is a good starting point - These styles only affect contrast, brightness, and saturation and do not attempt to match **sharpening, denoising, or hue shifts**.  There is also a Lua script to auto-apply the appropriate style on import and manually apply styles to a collection of previously-imported images.
@@ -211,7 +211,7 @@ Create and save module presets for frequently used settings. This saves time and
 You can right click on the module name to save presets.
 Hovering over the preset in a module (like LUTs) allows you to use the mouse wheel to scroll through the LUTs stored in that directory:
 
-**Rating system**
+### Rating system
   1 star for a photo I want to keep but not show (for record purposes, part of a pano series, etc.)
   2 stars for a photo I will show as part of a photo album
   3 stars for a photo I would put up on my wall
@@ -236,8 +236,11 @@ Example: Raw files that are high-priority or part of a client project.
 - Use  Projection tab to set type of pano:
 	 Rectilinear: Good for narrow panoramas
     Cylindrical: Good for wide, horizontal panoramas
-- Save project files and pano TIFFs (tar themi)
-`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will reimport EXIF info
+- Save project files and pano TIFFs (tar them)
+`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will re-import EXIF info
+
+Export settings for Panorama TIFFs
+![tiff-export.png](./assets/tiff_export.png)
 
 ## Installation, etc
 - On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo doesn't seem to work as of August 2025
