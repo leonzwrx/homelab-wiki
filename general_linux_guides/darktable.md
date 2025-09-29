@@ -22,13 +22,10 @@ _Updated October 2025_
 5. Apply styles if needed
 6. Edit in Darktable below
 
-> Reference [this video from Darktable Landscapes](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
-> Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
-> If stitching Panoramas using hugin, use [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)  for reference. Edit after exporting/stitching
-
 ### OPTION 1 - Modified Scene-Referred workflow modules
+> Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings > If stitching Panoramas using hugin, use [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)  for reference. Edit after exporting/stitching
+
 ![darktable_scene_referred_modules.png](./assets/darktable_scene_referred_modules.png)
-(taken from [this video](https://www.youtube.com/watch?v=ZUc6LOzg_Nk))
 
 - Make sure defaults and presets are setup as described in the video
 - Auto-apply the following to all (raw only): **lens correction, hotpixels, denoise (profiled), chromatic aberrations, color balance RGB (based on basic colorfullness standard**
@@ -97,6 +94,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 - Graduated density - Simulate optical graduated ND filter
 
 ### OPTION 2 - Lightroom-style  workflow modules
+> Reference [this video from Darktable Landscapes](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
 #### Tools & Modules - Lightroom comparison
 ![darktable_basics.png](./assets/darktable_basics.png "darktable_basics.png")
 ![darktable_color_grading.png](./assets/darktable_color_grading.png)
