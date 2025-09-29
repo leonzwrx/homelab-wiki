@@ -8,10 +8,9 @@
 ```
 
 # Darktable - Configs, workflow, settings
-_Updated July 2025_
+_Updated October 2025_
 
 ## [CREDITS]
-
 [Kevin Ajili](https://www.youtube.com/@kevinajili)
 [Darktable Landscapes](https://www.youtube.com/@DarktableLandscapes)
 
@@ -23,53 +22,11 @@ _Updated July 2025_
 5. Apply styles if needed
 6. Edit in Darktable below
 
-## Tools & Modules - Lightroom comparison
 > Reference [this video from Darktable Landscapes](https://www.youtube.com/watch?v=6SflKR6JYrk) for using Darktable's tools that mimic Lightroom workflow
 > Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
 > If stitching Panoramas using hugin, use [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)  for reference. Edit after exporting/stitching
 
-![darktable_basics.png](./assets/darktable_basics.png "darktable_basics.png")
-![darktable_color_grading.png](./assets/darktable_color_grading.png)
-![darktable_detail_panel.png](./assets/darktable_detail_panel.png)
-![darktable_lens_corrections.png](./assets/darktable_lens_corrections.png)
-![darktable_efftects.png](./assets/darktable_efftects.png)
-![darktable_calibration.png](./assets/darktable_calibration.png)
-
-> Using basic styles like in-camera JPEG rendition is a good starting point - These styles only affect contrast, brightness, and saturation and do not attempt to match **sharpening, denoising, or hue shifts**.  There is also a Lua script to auto-apply the appropriate style on import and manually apply styles to a collection of previously-imported images.
-> When applying a style, it's best to start with the original, unedited image in the history stack
-> Workflow should focus around OSC principal (Overall, Subject, Colors)
-
-### OPTION 1 - Lightroom-style  workflow modules
-
-| Darktable Module (Suggested Order)                        | Lightroom Equivalent                                         | Notes                                                                                                                                                                                                                                                             |
-|-----------------------------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1. **Crop and Rotate**                                    | Crop Tool                                                    | Adjust composition first.                                                                                                                                                                                                                                         |
-| 2. **Exposure**                                           | Basic Panel: Exposure                                        | Set overall brightness. *Tip:* Leave "compensate camera exposure" ticked for a more natural starting point.                                                                                                                                                       |
-| 3. **Sigmoid**                                            | Basic Panel: Highlights, Shadows, Whites, Blacks, Tone Curve | Tone mapping. Simpler than Filmic RGB for beginners.                                                                                                                                                                                                              |
-| 4. **Color Calibration**                                  | Basic Panel: White Balance, Color                            | *Instead of White Balance.* Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune.                                                                                                                                 |
-| 5. **Color Balance RGB**                                  | Color Panel/Color Grading                                    | Adjust global vibrance, contrast, perceptual saturation (shadows, midtones, highlights), and perceptual brilliance grading.                                                                                                                                       |
-| 6. **Tone Curve** (or masked secondary Color Balance RGB) | Tone Curve, Color Grading with Masking                       | Adjust midtones. Tone Curve is often easier for beginners than a masked Color Balance RGB module.                                                                                                                                                                 |
-| 7. **Haze Removal**                                       | Dehaze                                                       | Remove atmospheric haze if needed.                                                                                                                                                                                                                                |
-| 8. **Contrast Equalizer**                                 | Clarity, Texture                                             | Enhance clarity and local contrast. *Tip:* Use Ansel Adams' presets as a starting point.                                                                                                                                                                          |
-| 9. **Color Equalizer**                                    | HSL                                                          | Adjust hue, saturation, and brightness by selecting color areas with the eye dropper.                                                                                                                                                                             |
-| 10. **Color Balance RGB**                                 | Color Grading                                                | Use for refined color grading. *Note:* Using the "4 ways" tab can be complex, and using RGB Primaries instead is fine, as is basic global adjustments. If the 4 ways tab confuses you, stick to the basics of Color Balance RGB, or use the RGB primaries module. |
-| 11. **Denoise (Profiled)**                                | Detail Panel: Noise Reduction                                | Apply noise reduction. Verify profile is applied correctly.                                                                                                                                                                                                       |
-| 12. **Lens Correction**                                   | Lens Corrections                                             | Apply lens corrections.                                                                                                                                                                                                                                           |
-| 13. **Chromatic Aberrations**                             | Lens Corrections                                             | Remove chromatic aberration, if needed.                                                                                                                                                                                                                           |
-| 14. **Vignetting** (or masked Exposure)                   | Effects Panel: Vignetting                                    | Apply vignetting. *Note:* The vignette module is much simpler than a manually created masked exposure vignette. Avoid masked exposure until more experience with darktable is gained.                                                                             |
-| 15. **RGB Primaries** (Optional)                          | Camera Calibration                                           | Make subtle color hue adjustments to final image.                                                                                                                                                                                                                 |
-| 16. **LUTs**                                              | Profiles, LUTs                                               | Apply LUTs for specific looks. *Note:* Apply after most color adjustments. Consider using instead of some dtstyles, or in addition to dtstyles, depending on the need. Experimenting with both is advised.                                                        |
-| 17. **Diffuse or Sharpen**                                | Detail Panel: Sharpening                                     | Final sharpening. *Tip:* Use profiles with sharpening and demosaicing, and set "no AA filter" if relevant. Use diffuse for creative softening effects, if that is the goal.                                                                                       |
-| 18. **Snapshot/Compare:**                                 | Not Applicable                                               | Take a snapshot and use the slider to compare before and after.                                                                                                                                                                                                   |
-| 19. **Framing**                                           | Not Applicable                                               | Final framing/composition adjustments, if needed (outside darktable).                                                                                                                                                                                             |
-
-### Other useful modules
-- Color Zones for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if Color Equalizer doesn't suffice
-- Velvia - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
-- Hot Pixels - remove abnormally bright pixels
-- Graduated density - Simulate optical graduated ND filter
-
-### OPTION 2 - Modified Scene-Referred workflow modules
+### OPTION 1 - Modified Scene-Referred workflow modules
 ![darktable_scene_referred_modules.png](./assets/darktable_scene_referred_modules.png)
 (taken from [this video](https://www.youtube.com/watch?v=ZUc6LOzg_Nk))
 
@@ -133,6 +90,43 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
 7. Framing
 8. Watermark
 
+### Other useful modules
+- Color Zones for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if Color Equalizer doesn't suffice
+- Velvia - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
+- Hot Pixels - remove abnormally bright pixels
+- Graduated density - Simulate optical graduated ND filter
+
+### OPTION 2 - Lightroom-style  workflow modules
+#### Tools & Modules - Lightroom comparison
+![darktable_basics.png](./assets/darktable_basics.png "darktable_basics.png")
+![darktable_color_grading.png](./assets/darktable_color_grading.png)
+![darktable_detail_panel.png](./assets/darktable_detail_panel.png)
+![darktable_lens_corrections.png](./assets/darktable_lens_corrections.png)
+![darktable_efftects.png](./assets/darktable_efftects.png)
+![darktable_calibration.png](./assets/darktable_calibration.png)
+
+| Darktable Module (Suggested Order)                        | Lightroom Equivalent                                         | Notes                                                                                                                                                                                                                                                             |
+|-----------------------------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. **Crop and Rotate**                                    | Crop Tool                                                    | Adjust composition first.                                                                                                                                                                                                                                         |
+| 2. **Exposure**                                           | Basic Panel: Exposure                                        | Set overall brightness. *Tip:* Leave "compensate camera exposure" ticked for a more natural starting point.                                                                                                                                                       |
+| 3. **Sigmoid**                                            | Basic Panel: Highlights, Shadows, Whites, Blacks, Tone Curve | Tone mapping. Simpler than Filmic RGB for beginners.                                                                                                                                                                                                              |
+| 4. **Color Calibration**                                  | Basic Panel: White Balance, Color                            | *Instead of White Balance.* Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune.                                                                                                                                 |
+| 5. **Color Balance RGB**                                  | Color Panel/Color Grading                                    | Adjust global vibrance, contrast, perceptual saturation (shadows, midtones, highlights), and perceptual brilliance grading.                                                                                                                                       |
+| 6. **Tone Curve** (or masked secondary Color Balance RGB) | Tone Curve, Color Grading with Masking                       | Adjust midtones. Tone Curve is often easier for beginners than a masked Color Balance RGB module.                                                                                                                                                                 |
+| 7. **Haze Removal**                                       | Dehaze                                                       | Remove atmospheric haze if needed.                                                                                                                                                                                                                                |
+| 8. **Contrast Equalizer**                                 | Clarity, Texture                                             | Enhance clarity and local contrast. *Tip:* Use Ansel Adams' presets as a starting point.                                                                                                                                                                          |
+| 9. **Color Equalizer**                                    | HSL                                                          | Adjust hue, saturation, and brightness by selecting color areas with the eye dropper.                                                                                                                                                                             |
+| 10. **Color Balance RGB**                                 | Color Grading                                                | Use for refined color grading. *Note:* Using the "4 ways" tab can be complex, and using RGB Primaries instead is fine, as is basic global adjustments. If the 4 ways tab confuses you, stick to the basics of Color Balance RGB, or use the RGB primaries module. |
+| 11. **Denoise (Profiled)**                                | Detail Panel: Noise Reduction                                | Apply noise reduction. Verify profile is applied correctly.                                                                                                                                                                                                       |
+| 12. **Lens Correction**                                   | Lens Corrections                                             | Apply lens corrections.                                                                                                                                                                                                                                           |
+| 13. **Chromatic Aberrations**                             | Lens Corrections                                             | Remove chromatic aberration, if needed.                                                                                                                                                                                                                           |
+| 14. **Vignetting** (or masked Exposure)                   | Effects Panel: Vignetting                                    | Apply vignetting. *Note:* The vignette module is much simpler than a manually created masked exposure vignette. Avoid masked exposure until more experience with darktable is gained.                                                                             |
+| 15. **RGB Primaries** (Optional)                          | Camera Calibration                                           | Make subtle color hue adjustments to final image.                                                                                                                                                                                                                 |
+| 16. **LUTs**                                              | Profiles, LUTs                                               | Apply LUTs for specific looks. *Note:* Apply after most color adjustments. Consider using instead of some dtstyles, or in addition to dtstyles, depending on the need. Experimenting with both is advised.                                                        |
+| 17. **Diffuse or Sharpen**                                | Detail Panel: Sharpening                                     | Final sharpening. *Tip:* Use profiles with sharpening and demosaicing, and set "no AA filter" if relevant. Use diffuse for creative softening effects, if that is the goal.                                                                                       |
+| 18. **Snapshot/Compare:**                                 | Not Applicable                                               | Take a snapshot and use the slider to compare before and after.                                                                                                                                                                                                   |
+| 19. **Framing**                                           | Not Applicable                                               | Final framing/composition adjustments, if needed (outside darktable).                                                                                                                                                                                             |
+
 **AFTERWARDS**
 1. Check for any clipping (o)
 2. Export photo, (re) apply any styles -  90% quality good for most uses with manageable file size. Use sRGB profile and high quality resampling options
@@ -162,6 +156,10 @@ TIPS:
 - **Uniformity** provides opacity/strength for ANY module
 
 ## Styles, Presets, etc
+> Using basic styles like in-camera JPEG rendition is a good starting point - These styles only affect contrast, brightness, and saturation and do not attempt to match **sharpening, denoising, or hue shifts**.  There is also a Lua script to auto-apply the appropriate style on import and manually apply styles to a collection of previously-imported images.
+> When applying a style, it's best to start with the original, unedited image in the history stack
+> Workflow should focus around OSC principal (Overall, Subject, Colors)
+
 * For LUTs - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the LUT
 * Download .dtstyle files and store in `~/Pictures/Darktable`
 * If saving a new style, only save relevant modules and avoid defaults like Sigmoid which will be auto-applied anyway
@@ -229,12 +227,10 @@ Hovering over the preset in a module (like LUTs) allows you to use the mouse whe
 Example: Raw files that are high-priority or part of a client project.
 
 🟡 Yellow: "In Progress" - Photos you’re actively editing (e.g., halfway through adjustments).
+ 
+🟢 Green: "Ready for Export" i.e - edited photos that just need final export (resizing, sharpening, etc.).
 
-🟢 Green: "Ready for Export"
-
-Edited photos that just need final export (resizing, sharpening, etc.).
-
-🔵 Blue: Part of Panorama stack while editing. Delete/reject later
+🔵 Blue: Part of Panorama stack while editing. 
 
 **Hugin panorama stitcher tips**
 - Keep resolution dimensions during export from Darktable and for Panorama (R6m2 is 6022x4024)
