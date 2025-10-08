@@ -23,7 +23,7 @@ _Updated October 2025_
 6. Edit in Darktable below
 
 ### OPTION 1 - Modified Scene-Referred workflow modules
-> Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings > If stitching Panoramas using hugin, use [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)  for reference. Edit after exporting/stitching
+> Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
 
 ![darktable_scene_referred_modules.png](./assets/darktable_scene_referred_modules.png)
 
@@ -79,7 +79,7 @@ A good starting preset without even using mask is often "Compress Shadows EIGF s
    _Lens deblur medium_ is another good preset for shaprness
 2. Contrast Equalizer -similar to Clarity in Lightroom when _clarity_ preset is used
    - On the _Luma_ tab, use mix slider to change positive or negative clarity
-   - If more control is needed in just coarse areas or fine areas, adjust parts of the graph. Increasing _fine_ areas adds more sharpness/micro-contrast. Or bring down the _[coarse](https://www.canon-europe.com/cameras/eos-r6-mark-ii/specifications/)_ side to apply negative clarity without messing with sharpness
+   - If more control is needed in just coarse areas or fine areas, adjust parts of the graph. Increasing _fine_ areas adds more sharpness/micro-contrast. Or bring down the _coarse_ side to apply negative clarity without messing with sharpness
 3. [OPTIONAL] Glowing effect. Diffuse or sharpen - make new instance, apply preset bloom, adjust opacity
 4. Haze Removal - Increase or decrease (for a gloomy look) haze
 5. Grain
@@ -209,7 +209,7 @@ When using a tool - to zoom instead of adjusting a control/shape, hold down the 
 **Module Presets:**
 Create and save module presets for frequently used settings. This saves time and ensures consistency.
 You can right click on the module name to save presets.
-Hovering over the preset in a module (like LUTs) allows you to use the mouse wheel to scroll through the LUTs stored in that directory:
+Hovering over the preset in a module (like LUTs) allows you to use the mouse wheel to scroll through the LUTs stored in that directory
 
 ### Rating system
   1 star for a photo I want to keep but not show (for record purposes, part of a pano series, etc.)
@@ -230,17 +230,38 @@ Example: Raw files that are high-priority or part of a client project.
 
 🔵 Blue: Part of Panorama stack while editing. 
 
-**Hugin panorama stitcher tips**
+### Panoramas
+**Helpful Videos**
+[Setup tips from Bruce from his Pano series](https://www.youtube.com/watch?v=LptFcD3rdhk&t=1498s)
+
+**Prep in Darktable**
+- Before exporting, turn off lens correction module for all images (Paste in append mode). Verify color calibration/WB is the same
 - Keep resolution dimensions during export from Darktable and for Panorama (R6m2 is 6022x4024)
+
+Export settings for Panorama TIFFs
+
+![tiff-export.png](./assets/darktable_tiff_export.png)
+
+**Hugin panorama stitcher tips**
+> Basics on how to stitch using simple mode in [this video from Darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)
+> Advanced mode stitching from [Bruce's Pano series](https://www.youtube.com/watch?v=QXQCeuSEq6I&t=601s)
+> Multi-row sitching and manually seleccting control points from [Bruce's Pano series](https://www.youtube.com/watch?v=ArQQzIIOAkU&t=3s)
+
 - Use _straighten_ button on the Move/Drag tab
 - Use  Projection tab to set type of pano:
 	 Rectilinear: Good for narrow panoramas
-    Cylindrical: Good for wide, horizontal panoramas
+    Cylindrical: Good for wide, horizontal panoramas. Preserves vertial lines
+    Panini may work with architectural lines
 - Save project files and pano TIFFs (tar them)
-`exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` will re-import EXIF info
 
-Export settings for Panorama TIFFs
-![tiff-export.png](./assets/tiff_export.png)
+**AFTERWARDS (Stitched Panoramas)**
+1. Import the final stitched TIFF/PNG back into darktable.
+2. Select all the original RAW files used for the panorama plus the stitched file.
+3. Group them using **`Ctrl+G`** (or the 'group' button in the 'selected image(s)' module).
+    > Ensure the **Stitched Panorama** is the **Group Leader**.
+4. Apply the Blue Color Rating (as you defined: "Part of Panorama stack while editing") to the source RAWs, and apply the final **Purple** color rating ("Editing done, finished") and 5-star quality rating to the Group Leader (stitched image).
+5. Apply a tag _panorama source_ to the original RAWs and _panorama_stiched_ to the final image for filtering.
+6. Use command `exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` to re-import EXIF info
 
 ## Installation, etc
 - On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo doesn't seem to work as of August 2025
