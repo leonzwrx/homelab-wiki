@@ -11,4 +11,4 @@ podman run \
   --network=container:gluetun \
   -v overseer_config:/config:Z \
   --restart unless-stopped \
-  lscr.io/linuxserver/overseerr:latest
+  lscr.io/linuxserver/overseerr:develop
