@@ -8,7 +8,7 @@
 ```
 
 # UGREEN 4800 DXP4800 NAS - TrueNAS Scale
-_Updated August 2024 - for **Dragonfish-24.04.2**_
+_Updated December 2025 - for **Fangooth-25.04**_
 
 ### General:
 Guide:
@@ -24,7 +24,10 @@ https://www.youtube.com/watch?v=C-UI8Wvl9YU
 - When creating new datasets, create child datasets for applications/containers to properly see them (vs. creating subdirectories from another machine): **Click _Multiprotocol_**
 ![trunas_adding_new_sharepng.png](./assets/trunas_adding_new_sharepng.png)
  ![IMAGE](./assets/truenas_datasets.png?raw=true)
+ 
+- Set snapshots on the Data Protection tab (more critical datasets should be backed up more frequently)
  ![IMAGE](./assets/truenas_data_protection.png?raw=true)
+![truenas_snapshot_example.png](./assets/truenas_snapshot_example.png)
 > Use preset nfs4_775 and assign `smbuser` permissions where it needs it 
 
  ![IMAGE](./assets/truenas_acl.png?raw=true)

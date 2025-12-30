@@ -28,7 +28,7 @@ _Updated November 2025_
 ![darktable_scene_referred_modules.png](./assets/darktable_scene_referred_modules.png)
 
 - Make sure defaults and presets are setup as described in the video
-- Auto-apply the following to all (raw only): **lens correction, hotpixels, denoise (profiled), chromatic aberrations, color balance rgb (based on basic colorfullness standard**
+- Auto-apply the following to all (raw only): **lens correction, hotpixels, denoise (profiled), chromatic aberrations, color balance rgb (based on basic colorfullness standard**)
   ![darktable_create_module_preset_auto_apply.png](./assets/darktable_create_module_preset_auto_apply.png)
 
 **WORKFLOW - BASE**
@@ -67,7 +67,7 @@ A good starting preset without even using mask is often "compress Shadows EIGF s
 1. rgb primaries - simpler channel mixer for broader changes before color equalizer is used for more detailed adjustments
    - Change hue of each channel towards opposite color (reds towards magenta, etc). purity controls saturation
 2. color equalizer - adjust specific colors or use **picker** on the image, then use _node placement_ to align the dot
-        > color look up table module can be used for quick color replacements with color picker tool 
+    > color look up table module can be used for quick color replacements with color picker tool 
     - hue tab is rarely used since rgb Primaries shoud do a good job. Middle-click to reveal sliders for each color
     - brightness and saturation tabs can be used for fine adjustments
 3. color balance rgb - used for split toning (make a new instance) in the **4-ways tab**
