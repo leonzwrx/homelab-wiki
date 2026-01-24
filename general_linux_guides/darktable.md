@@ -32,10 +32,10 @@ _Updated November 2025_
   ![darktable_create_module_preset_auto_apply.png](./assets/darktable_create_module_preset_auto_apply.png)
 
 **WORKFLOW - BASE**
-1. exposure. Use lightbulb (Ctrl-B for white border reference)
-2. color calibration.  _Instead of white Balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using color calibration in the pipeline.  Check that “area color mapping” is set to (50, 0°, 0)
-3. crop
-4. rotate & perspective. Right-click to draw a line that will align the photo
+1. exposure (shortcut: e). Use lightbulb (**Ctrl-B** for white border reference)
+2. color calibration.  _Instead of white balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using color calibration in the pipeline.  Check that “area color mapping” is set to (50, 0°, 0). For the most part, WB module set on Camera reference and CC module set to 'as shot' should be identical
+3. crop (shortcut: c)
+4. rotate & perspective. Right-click to draw a line that will align the photo (or **alt-r** to rotate or **alt-[ and ]** for fine adjustment)
 5. tone equalizer (shadows & highlights is a simpler alternative):
    - The advanced tab shows a curve that represents the adjustments. Its histogram shows the mask it creates.
     - The masking tab helps create a mask based on tonal values. **The entire module has its own mask via this tab**
@@ -123,10 +123,11 @@ Use [Rico's guide ](https://www.youtube.com/watch?v=pGQnwBbO1uc)for basics. At t
 
 TIPS:
 
+- When drawing a mask, good practice to always **Ctrl-click** to add multiple brush strokes
 - Right-clicking a mask on the image removes it
-- When using elliptical mask, shift-left click changes feather from proportional ratio to uniform
-- When using path mask using Ctrl-left click for hard shapes like triangles
-- Ctrl-click to add a node to an existing mask to make a more detailed mask shape. Right-click on node to remove the node
+- When using elliptical mask, **Shift-left click** changes feather from proportional ratio to uniform
+- When using path mask using **Ctrl-click** for hard shapes like triangles
+- **Ctrl-click** to add a node to an existing mask to make a more detailed mask shape. Right-click on node to remove the node
 - Use eye dropper to select exact color for the channel sliders 
 - **Uniformity** provides opacity/strength for ANY module.  It's an easy way to back down the effect of a full module stack.
 
@@ -135,7 +136,8 @@ TIPS:
 > When applying a style, it's best to start with the original, unedited image in the history stack
 > Workflow should focus around OSC principal (Overall, Subject, Colors)
 
-* For luts - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the lut
+### dtstyles
+
 * Download .dtstyle files and store in `~/Pictures/darktable`
 * If saving a new style, only save relevant modules and avoid defaults like sigmoid which will be auto-applied anyway
 * Create a style by compressing history stack first - important to click 'module order'
@@ -144,7 +146,11 @@ TIPS:
 * If **updating** a style, compress history stack, make changes, compress history stack again before re-saving with the same exact name,overwrite
 * When applying a style - use 'overwrite' for creative/general styles and 'append' for _tools_ type of styles
 
-### t3mujinpak - Popular & Versatile Styles: 
+### film LUTs
+* For LUTs - apply specific profile, then use the _circle_ mask icon (uniformly) to change opacity/strength of the LUT
+> haldcluts (.png files) are mostly deprecated and modern .cube LUTs are preferred
+> These can be found in various LUT repos, particularly [YahiaAngelo, 3D LUTs](https://github.com/YahiaAngelo/Film-Luts/) or (for now deprecated ) [t3mujinpak](https://github.com/t3mujinpack/t3mujinpack)
+> Current favorite LUTs are from [RawTherapee](https://rawpedia.rawtherapee.com/Film_Simulation)
 
 * **Black & White:**
  > If manually converting to B&W, color calibration module has good film presets
@@ -177,16 +183,16 @@ lensfun-update-data #use sudo for system-wide update
 
 Right-Click for Value Input: right-clicking on sliders or numerical values allows you to type in precise values. 
 Double-Click to Reset: Double-clicking on a slider or numerical value resets it to its default setting.
-Ctrl-Alt to scroll without using scroll bar
-Scroll Wheel for Fine Adjustments: Use your mouse scroll wheel to make small adjustments to sliders. Holding Shift or Ctrl while scrolling allows for coarser/finer adjustments.
+**Ctrl-Alt** to scroll without using scroll bar
+Scroll Wheel for Fine Adjustments: Use your mouse scroll wheel to make small adjustments to sliders. Holding **Shift** or **Ctrl** while scrolling allows for coarser/finer adjustments.
 Middle mouse button is 200% zoom
-Clicking on a brush or shape (like in masking) while holding CTRL keeps the brush enabled (vs exiting the brush)
+Clicking on a brush or shape (like in masking) while holding **Ctrl** keeps the brush enabled (vs exiting the brush)
 When using a tool - to zoom instead of adjusting a control/shape, hold down the ‘a’ key while scrolling
 
 **Module Presets:**
 Create and save module presets for frequently used settings. This saves time and ensures consistency.
 You can right click on the module name to save presets.
-Hovering over the preset in a module (like luts) allows you to use the mouse wheel to scroll through the luts stored in that directory
+Hovering over the preset in a module (like LUTs) allows you to use the mouse wheel to scroll through the LUTs stored in that directory
 
 ### Rating system
   1 star for a photo I want to keep but not show (for record purposes, part of a pano series, etc.)
@@ -220,9 +226,11 @@ Export settings for Panorama TIFFs
 ![tiff-export.png](./assets/darktable_tiff_export.png)
 
 **Hugin panorama stitcher tips**
+> Darktable has a hugin lua script - need to try
 > Basics on how to stitch using simple mode in [this video from darktable Landscapes](https://www.youtube.com/watch?v=pxuLCLpRPrs)
 > Advanced mode stitching from [Bruce's Pano series](https://www.youtube.com/watch?v=QXQCeuSEq6I&t=601s)
 > Multi-row sitching and manually seleccting control points from [Bruce's Pano series](https://www.youtube.com/watch?v=ArQQzIIOAkU&t=3s)
+> Another helpful video that shows auto and semi-auto mode in Hugin for multi-row panos [here](https://www.youtube.com/watch?v=OaLNFKh82Dg)
 
 - Use _straighten_ button on the Move/Drag tab
 - Use  Projection tab to set type of pano:
@@ -234,12 +242,12 @@ Export settings for Panorama TIFFs
 **AFTERWARDS (Stitched Panoramas)**
 1. Import the final stitched TIFF/PNG back into darktable.
 2. Select all the original RAW files used for the panorama plus the stitched file.
-3. Group them using **`Ctrl+G`** (or the 'group' button in the 'selected image(s)' module).
+3. Group them using **Ctrl+G** (or the 'group' button in the 'selected image(s)' module).
     > Ensure the **stitched panorama** is the **group leader**.
-4. Apply the Blue Color Rating (as you defined: "Part of Panorama stack while editing") to the source RAWs, and apply the final **Purple** color rating ("Editing done, finished") and 5-star quality rating to the group leader (stitched image).
+4. Apply the 🔵 Rating (as you defined: "Part of Panorama stack while editing") to the source RAWs, and apply the final **Purple** color rating ("Editing done, finished") and 5-star quality rating to the group leader (stitched image).
 5. Apply a tag _panorama source_ to the original RAWs and _panorama_stiched_ to the final image for filtering.
 6. Use command `exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` to re-import EXIF info
 
 ## Installation, etc
-- On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo doesn't seem to work as of August 2025
+- On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo is now working
 - To check if OpenCL is available - run `darktable-cltest`
