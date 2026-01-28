@@ -8,15 +8,19 @@
 ```
 
 # darktable - Configs, workflow, settings
-_Updated November 2025_
+_Updated February 2026_
 
 ## [CREDITS]
 [Kevin Ajili](https://www.youtube.com/@kevinajili)
 [darktable Landscapes](https://www.youtube.com/@darktableLandscapes)
+[Bruce Williams](https://www.youtube.com/channel/UCkqe4BYsllmcxo2dsF-rFQw)
 
-**lightable Workflow, prior to editing**
+**lightable workflow, prior to editing**
 
-1. Import from existing directory, apply any metadata presets
+1. Import from existing directory, apply any metadata presets. 
+    - Make sure import job is set (user underscores instead of spaces)
+    - If the job/collection is split into multiple months, modify the variables accordingly
+![darktable_scene_referred_modules.png](./assets/darktable_import_settings.png)
 2. Reject/pick/color [rate](#rating-system)
 3. Apply tags, collections, any other metadata
 4. Apply styles if needed
@@ -36,7 +40,7 @@ _Updated November 2025_
 2. color calibration.  _Instead of white balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using color calibration in the pipeline.  Check that “area color mapping” is set to (50, 0°, 0). For the most part, WB module set on Camera reference and CC module set to 'as shot' should be identical
 3. crop (shortcut: c)
 4. rotate & perspective. Right-click to draw a line that will align the photo (or **alt-r** to rotate or **alt-[ and ]** for fine adjustment)
-5. tone equalizer (shadows & highlights is a simpler alternative):
+5. tone equalizer (shadows & highlights is simpler but deprecated):
    - The advanced tab shows a curve that represents the adjustments. Its histogram shows the mask it creates.
     - The masking tab helps create a mask based on tonal values. **The entire module has its own mask via this tab**
     - The "magic wands" can help create an initial mask.
@@ -68,9 +72,9 @@ A good starting preset without even using mask is often "compress Shadows EIGF s
    - Change hue of each channel towards opposite color (reds towards magenta, etc). purity controls saturation
 2. color equalizer - adjust specific colors or use **picker** on the image, then use _node placement_ to align the dot
     > color look up table module can be used for quick color replacements with color picker tool 
-    - hue tab is rarely used since rgb Primaries shoud do a good job. Middle-click to reveal sliders for each color
+    - hue tab is rarely used since rgb primaries shoud do a good job. Middle-click to reveal sliders for each color
     - brightness and saturation tabs can be used for fine adjustments
-3. color balance rgb - used for split toning (make a new instance) in the **4-ways tab**
+3. color balance rgb - used for **split toning** (make a new instance) in the **4-ways tab**
     - Use the _hue_ slider to select color from the image or use picker, then use _chroma_ slider for color gain
     - Do this for shadows, then repeat for highlights (although highlights effect is small)
 
@@ -89,18 +93,22 @@ Use [Rico's guide ](https://www.youtube.com/watch?v=pGQnwBbO1uc)for basics. At t
 2. contrast equalizer -similar to Clarity in Lightroom when _clarity_ preset is used
    - On the _Luma_ tab, use mix slider to change positive or negative clarity
    - If more control is needed in just coarse areas or fine areas, adjust parts of the graph. Increasing _fine_ areas adds more sharpness/micro-contrast. Or bring down the _coarse_ side to apply negative clarity without messing with sharpness
+
+> NOTE on Sharpening: the diffuse or sharpen module is generally preferred for modern, high-quality, and nuanced sharpening (including deblurring and lens deconvolution), while the contrast equalizer (luma tab) is faster for rapid, output-stage sharpening of fine details. Diffuse or Sharpen offers superior, physical-based sharpening without artifacts, whereas contrast equalizer is excellent for boosting edge contrast. 
+
 3. [OPTIONAL] Glowing effect. diffuse or sharpen - make new instance, apply preset bloom, adjust opacity
 4. haze removal - Increase or decrease (for a gloomy look) haze
 5. grain
-6. retouch - use shape/brush/path to select areas
-7. framing
-8. watermark
+6. blur - can be used with brush/path masking on skin
+7. retouch - use shape/brush/path to select areas
+8. framing
+9. watermark
 
 ### Other useful modules
 - color zones for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if color equalizer doesn't suffice
 - velvia - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
-- hot pixels - remove abnormally bright pixels
-- graduated density - Simulate optical graduated ND filter
+- hot pixels - remove abnormally bright pixels. Should be enabled by default in my workflow above
+- vignette / graduated density - simulate optical graduated ND filter
 
 **AFTERWARDS**
 1. Check for any clipping (o)
@@ -248,6 +256,21 @@ Export settings for Panorama TIFFs
 5. Apply a tag _panorama source_ to the original RAWs and _panorama_stiched_ to the final image for filtering.
 6. Use command `exiftool -TagsFromFile IMG_1234.TIF -all:all panorama_output.tif` to re-import EXIF info
 
+## Useful scripts
+
+### rename images - use to rename existing directories and raw/xmp files
+1. Select all images inside that folder in lighttable.
+2. Ensure the Jobcode/import job is set i.e. Liliyas_65th_birthday (use underscores) in the Metadata panel.
+3. Paste this string into the rename images module:
+
+`/home/leo/Pictures/Darktable/2025/$(EXIF.YEAR)-$(EXIF.MONTH.LONG)-$(JOBCODE)/$(JOBCODE,,)-$(EXIF.YEAR)-$(EXIF.MONTH.LONG,,)-$(EXIF.DAY)-$(EXIF.HOUR).$(EXIF.MINUTE).$(EXIF.SECOND).$(FILE.EXTENSION)`
+
+or if Jobcode isn't set, re-import the folder as well as any other variables like month if needed
+
+`/home/leo/Pictures/Darktable/2025/$(EXIF.YEAR)-$(EXIF.MONTH.LONG)-Liliya_65th_birthday/liliya_65th_birthday-$(EXIF.YEAR)-$(EXIF.MONTH.LONG,,)-$(EXIF.DAY)-$(EXIF.HOUR).$(EXIF.MINUTE).$(EXIF.SECOND).$(FILE.EXTENSION)`
+
+### image_time - adjust timestamps across multiple images (align cameras)
+
 ## Installation, etc
-- On Debian Trixie, install binary directly from Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable) - Installing via custom repo is now working
+- On Debian Trixie, install repo for Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable); alternatively installing using .deb manually
 - To check if OpenCL is available - run `darktable-cltest`
