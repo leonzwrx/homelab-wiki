@@ -15,6 +15,8 @@ _Updated February 2026_
 [darktable Landscapes](https://www.youtube.com/@darktableLandscapes)
 [Bruce Williams](https://www.youtube.com/channel/UCkqe4BYsllmcxo2dsF-rFQw)
 
+JPEG workflow [here](darktable_jpeg_workflow.md)
+
 **lightable workflow, prior to editing**
 
 1. Import from existing directory, apply any metadata presets. 
