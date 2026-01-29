@@ -14,6 +14,7 @@ _Personal knowledge base for homelab, photography, and technical workflows._
 ## 📷 **Photography & Image Editing**
 - **[Darktable Complete Guide](photography_documentation/darktable.md)** - Main guide for Darktable RAW development
 - **[Darktable JPEG Workflow](photography_documentation/darktable_jpeg_workflow.md)** - My optimized workflow for JPEG output
+- **[Panorama guide](photography_documentation/panoramas.md)** - Creating panoramas for darktable
 - _[Darktable Lightroom-ish Workflow](photography_documentation/darktable_lightroom-ish_workflow.md)_ (archive/legacy)
 
 ## 🖥️ **Linux Desktop & Tools**
