@@ -38,7 +38,7 @@ _Updated February 2026_
 
 ---
 
-## My Main Workflow (Option 1) {#my-main-workflow-option-1}
+## My Main Workflow (Option 1)
 
 > Reference [this video from Kevin](https://www.youtube.com/watch?v=ZUc6LOzg_Nk) for 5.0+ workflow and settings
 
@@ -124,7 +124,7 @@ _Updated February 2026_
 
 ---
 
-## Quick Edit Workflow (Option 2) {#quick-edit-workflow-option-2}
+## Quick Edit Workflow (Option 2)
 
 Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At the very least, use:
 - sigmoid / contrast
@@ -136,7 +136,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## Useful Modules {#useful-modules}
+## Useful Modules
 
 - **color zones** for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if color equalizer doesn't suffice
 - **velvia** - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
@@ -145,7 +145,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## After Darkroom Edits {#after-darkroom-edits}
+## After Darkroom Edits
 
 1. Check for any clipping (o)
 2. Export photo, (re) apply any styles - 90% quality good for most uses with manageable file size. Use srgb profile and high quality resampling options
@@ -156,7 +156,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## Masking {#masking}
+## Masking
 
 **Example - Parametric**
 - Select parameter / channel
@@ -180,7 +180,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## Styles & LUTs {#styles--luts}
+## Styles & LUTs
 
 > Using basic styles like in-camera JPEG rendition is a good starting point - These styles only affect contrast, brightness, and saturation and do not attempt to match **sharpening, denoising, or hue shifts**. There is also a Lua script to auto-apply the appropriate style on import and manually apply styles to a collection of previously-imported images.
 > When applying a style, it's best to start with the original, unedited image in the history stack
@@ -222,7 +222,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## Rating System {#rating-system}
+## Rating System
 
 ### Star Ratings
 - **1 star** for a photo I want to keep but not show (for record purposes, part of a pano series, etc.)
@@ -239,7 +239,7 @@ Use [Rico's guide](https://www.youtube.com/watch?v=pGQnwBbO1uc) for basics. At t
 
 ---
 
-## Useful Scripts {#useful-scripts}
+## Useful Scripts
 
 ### Rename Images
 Use to rename existing directories and raw/xmp files:
@@ -258,7 +258,7 @@ Adjust timestamps across multiple images (align cameras)
 
 ---
 
-## Installation & Setup {#installation--setup}
+## Installation & Setup
 
 ### Quick Setup
 - On Debian Trixie, install repo for Debian Testing (stable) section: [here](https://software.opensuse.org/download.html?project=graphics:darktable&package=darktable); alternatively install using .deb manually
