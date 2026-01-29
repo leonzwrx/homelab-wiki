@@ -49,7 +49,7 @@ _Updated February 2026_
 - Auto-apply the following to all (raw only): **lens correction, hotpixels, denoise (profiled), chromatic aberrations, color balance rgb (based on basic colorfullness standard**
   ![darktable_create_module_preset_auto_apply.png](./assets/darktable_create_module_preset_auto_apply.png)
 
-### Base Adjustments {#base-adjustments}
+### Base Adjustments
 
 1. **exposure** (shortcut: e). Use lightbulb (**Ctrl-B** for white border reference)
 2. **color calibration**.  _Instead of white balance_ Use the eye dropper to sample a neutral area, dragging the box around for variations, then fine-tune. Leave WB module at D65 if using color calibration in the pipeline.  Check that "area color mapping" is set to (50, 0°, 0). For the most part, WB module set on Camera reference and CC module set to 'as shot' should be identical
@@ -64,7 +64,7 @@ _Updated February 2026_
    - Scroll wheel on the image may be an easier way to adjust different zones 
    - A good starting preset without even using mask is often "compress shadows/highlights EIGF soft," then adjust the curve.
 
-### Color Processing {#color-processing}
+### Color Processing
 
 1. **color balance rgb** - used for both saturation & contrast - use either same instance or separate. OK to generally increase saturation in the shadows and decrease it in the highlights. 
    
@@ -89,7 +89,7 @@ _Updated February 2026_
      - attenuation add or decrease saturation for each color in **highlights** only
      - rotation add or decrease hue in **highlights** only
 
-### Color Grading {#color-grading}
+### Color Grading
 
 1. **rgb primaries** - simpler channel mixer for broader changes before color equalizer is used for more detailed adjustments
    - Change hue of each channel towards opposite color (reds towards magenta, etc). purity controls saturation
@@ -103,7 +103,7 @@ _Updated February 2026_
    - Use the _hue_ slider to select color from the image or use picker, then use _chroma_ slider for color gain
    - Do this for shadows, then repeat for highlights (although highlights effect is small)
 
-### Creative Effects {#creative-effects}
+### Creative Effects
 
 1. **diffuse or sharpen** - select preset sharpen demosaicing AA filter should provide a natural sharpness level
    _lens deblur medium_ is another good preset for sharpness
