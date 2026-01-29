@@ -22,7 +22,7 @@ _Updated February 2026_
     - If the job/collection is split into multiple months, modify the variables accordingly
 ![darktable_scene_referred_modules.png](./assets/darktable_import_settings.png)
 2. Reject/pick/color [rate](#rating-system)
-3. Apply tags, collections, any other metadata
+3. Apply tags, any other metadata
 4. Apply styles if needed
 5. Edit in darktable below
 
@@ -46,8 +46,8 @@ _Updated February 2026_
     - The "magic wands" can help create an initial mask.
     - Verify the mask doesn't cause clipping (indicated by colors).
     - Use "guided filter" or "EIGF" (preserves contrast)  for smoother transitions.
-    - The cursor can auto-adjust zones for a smoother curve.
-A good starting preset without even using mask is often "compress Shadows EIGF soft," then adjust the curve.
+   - Scroll wheel on the image may be an easier way to adjust different zones 
+A good starting preset without even using mask is often "compress shadows/highlights EIGF soft," then adjust the curve.
 
 **WORKFLOW - COLOR**
 1. color balance rgb - used for both saturation & contrast - use either same instance or separate. OK to generally increase saturation in the shadows and decrease it in the highlights. 
@@ -60,12 +60,15 @@ A good starting preset without even using mask is often "compress Shadows EIGF s
      master tab:
 	 - Adjust mid-tones, shadows and highlights under _brilliance_ grading
      4-ways tab:
-     - Use _global offset luminance_ slider to adjust black level for more contrast adjustments
+     - Use _global offset luminance_ slider to adjust black level for more contrast adjustments. For filmic look, slightly increase.
 2. Sigmoid - should already be set. Use **smooth** profile as an option for a good look especially for photos with heavy highlights like sunsets
-     - Adjust _contrast_ slider if needed and _skew_ slider to move contrast towards highlights or shadows
+     - Adjust _contrast_ slider (if color rgb wasn't enough) and _skew_ slider to move contrast towards highlights or shadows
+       > Note - increasing contrast also increases saturation
      - _preserve hue_ slider may or may not make a photo more interesting (such as to make highlights glow more, like fire or sunsets). **38%** works well
-     - _target_ sliders usually OK to stay at default but similar to luminance sliders used in colorrgb
-     - _primaries_ sliders for each color add or decrease colors in **highlights** only
+     - _target_ sliders usually OK to stay at default but similar to luminance sliders used in color rgb
+     - _primaries_ sliders (smooth preset looks good usually without messing with these sliders):
+         + attenuation add or decrease saturation for each color in**highlights** only
+         + rotation add or decrease hue in **highlights** only
 
 **WORKFLOW - COLOR GRADING**
 1. rgb primaries - simpler channel mixer for broader changes before color equalizer is used for more detailed adjustments
