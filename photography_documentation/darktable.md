@@ -7,7 +7,7 @@
                              
 ```
 
-# darktable - Configs, workflow, settings
+# darktable - main guide
 _Updated February 2026_
 
 ## [CREDITS]
@@ -17,9 +17,9 @@ _Updated February 2026_
 
 JPEG workflow [here](darktable_jpeg_workflow.md)
 
-**lightable workflow, prior to editing**
+**lighttable workflow, prior to editing**
 
-1. Import from existing directory, apply any metadata presets. 
+1. Import from existing directory apply any metadata presets OR **copy and import**
     - Make sure import job is set (user underscores instead of spaces)
     - If the job/collection is split into multiple months, modify the variables accordingly
 ![darktable_scene_referred_modules.png](./assets/darktable_import_settings.png)
@@ -83,15 +83,6 @@ A good starting preset without even using mask is often "compress shadows/highli
     - Use the _hue_ slider to select color from the image or use picker, then use _chroma_ slider for color gain
     - Do this for shadows, then repeat for highlights (although highlights effect is small)
 
-### OPTION 2 - Quick Access ONLY
-Use [Rico's guide ](https://www.youtube.com/watch?v=pGQnwBbO1uc)for basics. At the very least, use:
-- sigmoid / contrast
-- color balance rgb (chrome / saturations sliders)
-- color equalizer
-- color calibration
-- tone equalizer (start with presets as a baseline)
-- exposure/lens correction/denoise should already be set
-
 **WORKFLOW - CREATIVE**
 1. diffuse or sharpen - select preset sharpen demosaicing AA filter should provide a natural sharpness level
    _lens deblur medium_ is another good preset for shaprness
@@ -109,13 +100,22 @@ Use [Rico's guide ](https://www.youtube.com/watch?v=pGQnwBbO1uc)for basics. At t
 8. framing
 9. watermark
 
+### OPTION 2 - Quick Access ONLY
+Use [Rico's guide ](https://www.youtube.com/watch?v=pGQnwBbO1uc)for basics. At the very least, use:
+- sigmoid / contrast
+- color balance rgb (chrome / saturations sliders)
+- color equalizer
+- color calibration
+- tone equalizer (start with presets as a baseline)
+- exposure/lens correction/denoise should already be set
+
 ### Other useful modules
 - color zones for hue, chroma, lightness of areas of the photo (i.e. brighten up greens and desaturate reds) - if color equalizer doesn't suffice
 - velvia - primarily boosts saturation and contrast in a way that often emphasizes warmer tones and creates a punchy, vivid look
 - hot pixels - remove abnormally bright pixels. Should be enabled by default in my workflow above
 - vignette / graduated density - simulate optical graduated ND filter
 
-**AFTERWARDS**
+### AFTER darktroom edits 
 1. Check for any clipping (o)
 2. Export photo, (re) apply any styles -  90% quality good for most uses with manageable file size. Use srgb profile and high quality resampling options
     **TIP:** Hold down the left mouse button on a thumbnail to temporarily show that version in the center view.
